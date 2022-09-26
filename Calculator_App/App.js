@@ -9,13 +9,12 @@ import {useState} from 'react';
 
 const CalculatorApp = () => {
   const [str, appendNum] = useState(str);
-  const numClick = (num) =>{
-    if(num==7){
-      appendNum(str => str + num);
-    }
-    
+  // const numClick = (num) =>{
+  //   if(num==7){
+  //     appendNum(str => str + num);
+  //   }
 
-  };
+  // };
   const sub = () => {
     if (count > 0) {
       setCount(_count => _count - 1);
@@ -27,109 +26,95 @@ const CalculatorApp = () => {
       <View style={styles.screenViewStyle}>
         <Text style={styles.calcTextStyle}>8888888</Text>
         <Text style={styles.resultTextStyle}>8888888</Text>
-
-
-
       </View>
 
-      <View style={{flexDirection: 'column',marginTop:"6%"}}>
+      <View style={{flex: 5, justifyContent: 'space-evenly'}}>
+        <View style={{flexDirection: 'row'}}>
+          <TouchableOpacity style={styles.btnStyle} onPress={sub}>
+            <Text style={styles.funcBtnTextStyle}>C</Text>
+          </TouchableOpacity>
 
+          <TouchableOpacity style={styles.btnStyle} onPress={sub}>
+            <Text style={styles.funcBtnTextStyle}>±</Text>
+          </TouchableOpacity>
 
-      <View style={{flexDirection: 'row'}}>
-        <TouchableOpacity style={styles.btnStyle} onPress={sub}>
-          <Text style={styles.funcBtnTextStyle}>C</Text>
-        </TouchableOpacity>
+          <TouchableOpacity style={styles.btnStyle} onPress={sub}>
+            <Text style={styles.funcBtnTextStyle}>⌫</Text>
+          </TouchableOpacity>
 
-        <TouchableOpacity style={styles.btnStyle} onPress={sub}>
-          <Text style={styles.funcBtnTextStyle}>±</Text>
-        </TouchableOpacity>
+          <TouchableOpacity style={styles.btnStyle} onPress={sub}>
+            <Text style={styles.funcBtnTextStyle}>÷</Text>
+          </TouchableOpacity>
+        </View>
 
-        <TouchableOpacity style={styles.btnStyle} onPress={sub}>
-          <Text style={styles.funcBtnTextStyle}>⌫</Text>
-        </TouchableOpacity>
+        <View style={{flexDirection: 'row'}}>
+          <TouchableOpacity style={styles.btnStyle} /*onPress={numClick("7")}*/>
+            <Text style={styles.numBtnTextStyle}>7</Text>
+          </TouchableOpacity>
 
-        <TouchableOpacity style={styles.btnStyle} onPress={sub}>
-          <Text style={styles.funcBtnTextStyle}>÷</Text>
-        </TouchableOpacity>
+          <TouchableOpacity style={styles.btnStyle} onPress={sub}>
+            <Text style={styles.numBtnTextStyle}>8</Text>
+          </TouchableOpacity>
+
+          <TouchableOpacity style={styles.btnStyle} onPress={sub}>
+            <Text style={styles.numBtnTextStyle}>9</Text>
+          </TouchableOpacity>
+
+          <TouchableOpacity style={styles.btnStyle} onPress={sub}>
+            <Text style={styles.funcBtnTextStyle}>×</Text>
+          </TouchableOpacity>
+        </View>
+
+        <View style={{flexDirection: 'row'}}>
+          <TouchableOpacity style={styles.btnStyle} onPress={sub}>
+            <Text style={styles.numBtnTextStyle}>4</Text>
+          </TouchableOpacity>
+
+          <TouchableOpacity style={styles.btnStyle} onPress={sub}>
+            <Text style={styles.numBtnTextStyle}>5</Text>
+          </TouchableOpacity>
+
+          <TouchableOpacity style={styles.btnStyle} onPress={sub}>
+            <Text style={styles.numBtnTextStyle}>6</Text>
+          </TouchableOpacity>
+
+          <TouchableOpacity style={styles.btnStyle} onPress={sub}>
+            <Text style={styles.funcBtnTextStyle}>-</Text>
+          </TouchableOpacity>
+        </View>
+
+        <View style={{flexDirection: 'row'}}>
+          <TouchableOpacity style={styles.btnStyle} onPress={sub}>
+            <Text style={styles.numBtnTextStyle}>1</Text>
+          </TouchableOpacity>
+
+          <TouchableOpacity style={styles.btnStyle} onPress={sub}>
+            <Text style={styles.numBtnTextStyle}>2</Text>
+          </TouchableOpacity>
+
+          <TouchableOpacity style={styles.btnStyle} onPress={sub}>
+            <Text style={styles.numBtnTextStyle}>3</Text>
+          </TouchableOpacity>
+
+          <TouchableOpacity style={styles.btnStyle} onPress={sub}>
+            <Text style={styles.funcBtnTextStyle}>+</Text>
+          </TouchableOpacity>
+        </View>
+
+        <View style={{flexDirection: 'row'}}>
+          <TouchableOpacity style={styles.elongatedBtnStyle} onPress={sub}>
+            <Text style={styles.numBtnTextStyle}>0</Text>
+          </TouchableOpacity>
+
+          <TouchableOpacity style={styles.btnStyle} onPress={sub}>
+            <Text style={styles.numBtnTextStyle}>.</Text>
+          </TouchableOpacity>
+
+          <TouchableOpacity style={styles.btnStyle} onPress={sub}>
+            <Text style={styles.funcBtnTextStyle}>=</Text>
+          </TouchableOpacity>
+        </View>
       </View>
-
-
-      <View style={{flexDirection: 'row'}}>
-        <TouchableOpacity style={styles.btnStyle} onPress={numClick("7")}>
-          <Text style={styles.numBtnTextStyle}>7</Text>
-        </TouchableOpacity>
-
-        <TouchableOpacity style={styles.btnStyle} onPress={sub}>
-          <Text style={styles.numBtnTextStyle}>8</Text>
-        </TouchableOpacity>
-
-        <TouchableOpacity style={styles.btnStyle} onPress={sub}>
-          <Text style={styles.numBtnTextStyle}>9</Text>
-        </TouchableOpacity>
-
-        <TouchableOpacity style={styles.btnStyle} onPress={sub}>
-          <Text style={styles.funcBtnTextStyle}>×</Text>
-        </TouchableOpacity>
-      </View>
-
-
-      <View style={{flexDirection: 'row'}}>
-        <TouchableOpacity style={styles.btnStyle} onPress={sub}>
-          <Text style={styles.numBtnTextStyle}>4</Text>
-        </TouchableOpacity>
-
-        <TouchableOpacity style={styles.btnStyle} onPress={sub}>
-          <Text style={styles.numBtnTextStyle}>5</Text>
-        </TouchableOpacity>
-
-        <TouchableOpacity style={styles.btnStyle} onPress={sub}>
-          <Text style={styles.numBtnTextStyle}>6</Text>
-        </TouchableOpacity>
-
-        <TouchableOpacity style={styles.btnStyle} onPress={sub}>
-          <Text style={styles.funcBtnTextStyle}>-</Text>
-        </TouchableOpacity>
-      </View>
-
-
-      <View style={{flexDirection: 'row'}}>
-        <TouchableOpacity style={styles.btnStyle} onPress={sub}>
-          <Text style={styles.numBtnTextStyle}>1</Text>
-        </TouchableOpacity>
-
-        <TouchableOpacity style={styles.btnStyle} onPress={sub}>
-          <Text style={styles.numBtnTextStyle}>2</Text>
-        </TouchableOpacity>
-
-        <TouchableOpacity style={styles.btnStyle} onPress={sub}>
-          <Text style={styles.numBtnTextStyle}>3</Text>
-        </TouchableOpacity>
-
-        <TouchableOpacity style={styles.btnStyle} onPress={sub}>
-          <Text style={styles.funcBtnTextStyle}>+</Text>
-        </TouchableOpacity>
-      </View>
-
-
-      <View style={{flexDirection: 'row'}}>
-        <TouchableOpacity style={styles.elongatedBtnStyle}  onPress={sub}>
-          <Text style={styles.numBtnTextStyle}>0</Text>
-        </TouchableOpacity>
-
-        <TouchableOpacity style={styles.btnStyle} onPress={sub}>
-          <Text style={styles.numBtnTextStyle}>.</Text>
-        </TouchableOpacity>
-
-        <TouchableOpacity style={styles.btnStyle} onPress={sub}>
-          <Text style={styles.funcBtnTextStyle}>=</Text>
-        </TouchableOpacity>
-
-    
-      </View>
-
-      </View>
-
-      
     </View>
   );
 };
@@ -142,9 +127,10 @@ const styles = StyleSheet.create({
   },
 
   screenViewStyle: {
+    flex: 2,
     height: '30%',
-    alignItems:"flex-end",
-    justifyContent:"flex-end",
+    alignItems: 'flex-end',
+    justifyContent: 'flex-end',
     width: Dimensions.get('window').width,
     backgroundColor: '#000000',
     borderBottomLeftRadius: 6,
@@ -161,7 +147,7 @@ const styles = StyleSheet.create({
   calcTextStyle: {
     margin: 20,
     color: '#ffffff',
-    opacity:0.6,
+    opacity: 0.6,
     fontSize: 32,
     textTransform: 'uppercase',
   },
@@ -173,7 +159,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     backgroundColor: '#181818',
     borderRadius: 6,
-    margin:'4%'
+    margin: '4%',
   },
 
   elongatedBtnStyle: {
@@ -183,23 +169,18 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     backgroundColor: '#181818',
     borderRadius: 6,
-    margin:'4%'
+    margin: '4%',
   },
-  
-  
 
   numBtnTextStyle: {
     fontSize: 24,
     color: '#ffffff',
   },
 
-  funcBtnTextStyle:{
+  funcBtnTextStyle: {
     fontSize: 24,
     color: '#ff8c00',
-  }
-
-
-  
+  },
 });
 
 export default CalculatorApp;
