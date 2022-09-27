@@ -21,6 +21,14 @@ const CalculatorApp = () => {
     }
   };
 
+  const btns = [
+    ['C', '±', '⌫', '÷'],
+    ['7', '8', '9', '×'],
+    ['4', '5', '6', '-'],
+    ['1', '2', '3', '+'],
+  ];
+  const funcBtns = ['C', '±', '⌫', '÷', '×', '-', '+'];
+
   return (
     <View style={styles.body}>
       <View style={styles.screenViewStyle}>
@@ -29,77 +37,29 @@ const CalculatorApp = () => {
       </View>
 
       <View style={{flex: 5, justifyContent: 'space-evenly'}}>
-        <View style={{flexDirection: 'row'}}>
-          <TouchableOpacity style={styles.btnStyle} onPress={sub}>
-            <Text style={styles.funcBtnTextStyle}>C</Text>
-          </TouchableOpacity>
-
-          <TouchableOpacity style={styles.btnStyle} onPress={sub}>
-            <Text style={styles.funcBtnTextStyle}>±</Text>
-          </TouchableOpacity>
-
-          <TouchableOpacity style={styles.btnStyle} onPress={sub}>
-            <Text style={styles.funcBtnTextStyle}>⌫</Text>
-          </TouchableOpacity>
-
-          <TouchableOpacity style={styles.btnStyle} onPress={sub}>
-            <Text style={styles.funcBtnTextStyle}>÷</Text>
-          </TouchableOpacity>
-        </View>
-
-        <View style={{flexDirection: 'row'}}>
-          <TouchableOpacity style={styles.btnStyle} /*onPress={numClick("7")}*/>
-            <Text style={styles.numBtnTextStyle}>7</Text>
-          </TouchableOpacity>
-
-          <TouchableOpacity style={styles.btnStyle} onPress={sub}>
-            <Text style={styles.numBtnTextStyle}>8</Text>
-          </TouchableOpacity>
-
-          <TouchableOpacity style={styles.btnStyle} onPress={sub}>
-            <Text style={styles.numBtnTextStyle}>9</Text>
-          </TouchableOpacity>
-
-          <TouchableOpacity style={styles.btnStyle} onPress={sub}>
-            <Text style={styles.funcBtnTextStyle}>×</Text>
-          </TouchableOpacity>
-        </View>
-
-        <View style={{flexDirection: 'row'}}>
-          <TouchableOpacity style={styles.btnStyle} onPress={sub}>
-            <Text style={styles.numBtnTextStyle}>4</Text>
-          </TouchableOpacity>
-
-          <TouchableOpacity style={styles.btnStyle} onPress={sub}>
-            <Text style={styles.numBtnTextStyle}>5</Text>
-          </TouchableOpacity>
-
-          <TouchableOpacity style={styles.btnStyle} onPress={sub}>
-            <Text style={styles.numBtnTextStyle}>6</Text>
-          </TouchableOpacity>
-
-          <TouchableOpacity style={styles.btnStyle} onPress={sub}>
-            <Text style={styles.funcBtnTextStyle}>-</Text>
-          </TouchableOpacity>
-        </View>
-
-        <View style={{flexDirection: 'row'}}>
-          <TouchableOpacity style={styles.btnStyle} onPress={sub}>
-            <Text style={styles.numBtnTextStyle}>1</Text>
-          </TouchableOpacity>
-
-          <TouchableOpacity style={styles.btnStyle} onPress={sub}>
-            <Text style={styles.numBtnTextStyle}>2</Text>
-          </TouchableOpacity>
-
-          <TouchableOpacity style={styles.btnStyle} onPress={sub}>
-            <Text style={styles.numBtnTextStyle}>3</Text>
-          </TouchableOpacity>
-
-          <TouchableOpacity style={styles.btnStyle} onPress={sub}>
-            <Text style={styles.funcBtnTextStyle}>+</Text>
-          </TouchableOpacity>
-        </View>
+        {btns.map(i => {
+          return (
+            <View style={{flexDirection: 'row'}} key={i}>
+              {i.map(j => {
+                return (
+                  <TouchableOpacity
+                    style={styles.btnStyle}
+                    onPress={sub}
+                    key={j}>
+                    <Text
+                      style={
+                        funcBtns.includes(j)
+                          ? styles.funcBtnTextStyle
+                          : styles.numBtnTextStyle
+                      }>
+                      {j}
+                    </Text>
+                  </TouchableOpacity>
+                );
+              })}
+            </View>
+          );
+        })}
 
         <View style={{flexDirection: 'row'}}>
           <TouchableOpacity style={styles.elongatedBtnStyle} onPress={sub}>
