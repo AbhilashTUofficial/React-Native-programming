@@ -8,13 +8,56 @@ import {
 import {useState} from 'react';
 
 const CalculatorApp = () => {
-  const [str, appendNum] = useState(str);
-  // const numClick = (num) =>{
-  //   if(num==7){
-  //     appendNum(str => str + num);
-  //   }
+  const [result, setResult] = useState('');
 
-  // };
+  const handleEntry = e => {
+    if (e === '⌫') {
+      clearLast();
+    } else if (e === '=') {
+      calculate();
+    } else if (e === '±') {
+    } else if (e === '-') {
+      if (checkLast(e)) {
+        setResult(_result => _result + e);
+      }
+    } else if (e === '+') {
+      if (checkLast(e)) {
+        setResult(_result => _result + e);
+      }
+    } else if (e === '÷') {
+      if (checkLast(e)) {
+        setResult(_result => _result + e);
+      }
+    } else if (e === '×') {
+      if (checkLast(e)) {
+        setResult(_result => _result + e);
+      }
+    }
+    if (e === 'C') {
+      clearEverything();
+    }
+    if (!funcBtns.includes(e)) {
+      setResult(_result => _result + e);
+    }
+  };
+
+  const calculate = () => {
+    console.log(result.substring(0, result.length - 1));
+
+    if (funcBtns.includes(result[result.length - 1])) {
+      clearLast();
+    }
+
+    setResult(_result => (eval(_result)).substring(0,_result.length-1));
+  };
+  const checkLast = e => {
+    return !funcBtns.includes(result[result.length - 1]);
+  };
+
+  const clearLast = () => {
+    setResult(_result => _result.substring(0, _result.length - 1));
+  };
+
   const sub = () => {
     if (count > 0) {
       setCount(_count => _count - 1);
@@ -33,7 +76,7 @@ const CalculatorApp = () => {
     <View style={styles.body}>
       <View style={styles.screenViewStyle}>
         <Text style={styles.calcTextStyle}>8888888</Text>
-        <Text style={styles.resultTextStyle}>8888888</Text>
+        <Text style={styles.resultTextStyle}>{result}</Text>
       </View>
 
       <View style={{flex: 5, justifyContent: 'space-evenly'}}>
@@ -44,7 +87,7 @@ const CalculatorApp = () => {
                 return (
                   <TouchableOpacity
                     style={styles.btnStyle}
-                    onPress={sub}
+                    onPress={() => handleEntry(j)}
                     key={j}>
                     <Text
                       style={
@@ -70,7 +113,9 @@ const CalculatorApp = () => {
             <Text style={styles.numBtnTextStyle}>.</Text>
           </TouchableOpacity>
 
-          <TouchableOpacity style={styles.btnStyle} onPress={sub}>
+          <TouchableOpacity
+            style={styles.btnStyle}
+            onPress={() => handleEntry('=')}>
             <Text style={styles.funcBtnTextStyle}>=</Text>
           </TouchableOpacity>
         </View>
