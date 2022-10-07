@@ -3,6 +3,6 @@ I prefer to learn things by doing, these are some demo projects and clones which
 <br/>
 
 
-|LogIN|SignUp|
-|----|----|
-|<img src="../Img/demo_1_1.png" width="200">|<img src="../Img/demo_1_2.png" width="200">|
+|Log In|Sign Up|Log In|Sign Up|
+|----|----|----|----|
+|<img src="../Img/demo_1_1.png" width="200">|<img src="../Img/demo_1_2.png" width="200">|<img src="../Img/demo_2_1.png" width="200">|<img src="../Img/demo_2_2.png" width="200">|
