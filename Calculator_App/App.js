@@ -48,7 +48,7 @@ const CalculatorApp = () => {
       clearLast();
     }
 
-    setResult(_result => (eval(_result)).substring(0,_result.length-1));
+    setResult(_result => eval(_result).substring(0, _result.length - 1));
   };
   const checkLast = e => {
     return !funcBtns.includes(result[result.length - 1]);
