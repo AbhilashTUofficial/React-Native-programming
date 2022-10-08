@@ -18,10 +18,15 @@ This is fun.
     |   |-- javascript_logo.png
     |   |-- demo_1_1.png
     |   |-- demo_1_2.png
+    |   |-- demo_2_1.png
+    |   |-- demo_2_2.png
+    |   |-- demo_3_1.png
+    |   |-- demo_3_2.png
     |
     |-- Authentication
     |   |-- demo_1
     |   |-- demo_2
+    |   |-- demo_3
     |   |-- README.md
     |
     |-- Calculator_App
