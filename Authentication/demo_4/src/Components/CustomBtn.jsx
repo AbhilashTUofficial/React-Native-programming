@@ -2,7 +2,6 @@ import React from 'react';
 import { Text, TouchableOpacity } from 'react-native';
 import { primary } from '../constants';
 
-
 export default function CustomBtn({ label, btnHandler }) {
     return (
         <TouchableOpacity
@@ -18,8 +17,7 @@ export default function CustomBtn({ label, btnHandler }) {
                 borderRadius: 12,
                 backgroundColor: primary,
             }}
-            onPress={btnHandler}
-        >
+            onPress={btnHandler}>
             <Text
                 style={{
                     color: 'white',

@@ -30,6 +30,7 @@ const InputField = (props) => {
             <TextInput
                 placeholderTextColor={grey}
                 {...props}
+
                 style={{
                     color: dark,
                     shadowOffset: { height: 1, width: 1 },

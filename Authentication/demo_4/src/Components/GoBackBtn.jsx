@@ -3,8 +3,6 @@ import { TouchableOpacity } from 'react-native';
 import { primary } from '../constants';
 import Icon from 'react-native-vector-icons/FontAwesome5';
 
-
-
 export default function GoBackBtn({ btnHandler }) {
     return (
         <TouchableOpacity style={{
@@ -16,15 +14,12 @@ export default function GoBackBtn({ btnHandler }) {
             alignItems: "center",
             justifyContent: "center",
         }}
-            onPress={btnHandler}
-
-        >
+            onPress={btnHandler}>
             <Icon
                 name="chevron-left"
                 size={24}
                 color={primary}
             ></Icon>
-
 
         </TouchableOpacity>
     );

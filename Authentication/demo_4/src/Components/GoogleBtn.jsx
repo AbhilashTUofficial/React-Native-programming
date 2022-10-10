@@ -2,7 +2,6 @@ import React from 'react';
 import { ImageBackground, Text, TouchableOpacity, View } from 'react-native';
 import { secondary } from '../constants';
 
-
 export default function GoogleBtn({ btnHandler }) {
     return (
         <TouchableOpacity
@@ -18,8 +17,7 @@ export default function GoogleBtn({ btnHandler }) {
                 borderRadius: 12,
                 backgroundColor: "#F1F5F6",
             }}
-            onPress={btnHandler}
-        >
+            onPress={btnHandler}>
             <View
                 style={{
                     width: 28,

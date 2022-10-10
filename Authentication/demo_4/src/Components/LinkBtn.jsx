@@ -7,8 +7,6 @@ export default function LinkBtn({ text1, text2, btnHandler }) {
     return (
         <View
             style={{
-                // position: "absolute",
-                // top: Dimensions.get('screen').height - 120,
                 display: "flex",
                 flexDirection: "row",
                 justifyContent: "center",

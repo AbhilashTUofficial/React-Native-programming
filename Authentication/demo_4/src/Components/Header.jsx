@@ -2,7 +2,6 @@ import { Dimensions, Text, View } from 'react-native';
 import React from 'react';
 import { dark, hMargin, secondary } from '../constants';
 
-
 const Header = ({ title, subtitle, children }) => {
     return (
         <View
@@ -31,7 +30,6 @@ const Header = ({ title, subtitle, children }) => {
                 fontWeight: "bold",
             }}>
                 {title}</Text>
-
 
             <Text
 

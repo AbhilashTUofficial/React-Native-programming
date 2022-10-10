@@ -29,8 +29,7 @@ export default function CustomIconBtns({ btnHandler }) {
 
         <ImageBackground
           source={require("../assets/img/google_logo.png")}
-          style={{ height: 30, width: 30 }}
-        />
+          style={{ height: 30, width: 30 }} />
 
       </TouchableOpacity>
       <TouchableOpacity
@@ -81,13 +80,9 @@ export default function CustomIconBtns({ btnHandler }) {
           style={{
             height: 30,
             width: 30
-          }}
-        />
+          }} />
 
       </TouchableOpacity>
     </View>
-
-
-
   );
 }

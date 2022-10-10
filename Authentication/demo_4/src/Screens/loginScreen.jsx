@@ -1,4 +1,4 @@
-import { View, Text, TouchableOpacity } from 'react-native';
+import { View, Text, TouchableOpacity, Dimensions } from 'react-native';
 import React from 'react';
 import Background from '../Components/Background';
 import Header from '../Components/Header';
@@ -13,61 +13,87 @@ const LogInScreen = (props) => {
     return (
         <Background>
 
-            <HeaderImg
-                source={require('../assets/img/img_1.jpg')}
-            />
-
-            <Header
-                title={"Login"} />
-            <InputField
-                placeholder={"Email ID"}
-                source={require('../assets/icons/a_email.png')}
-            />
-            <InputField
-                placeholder={"Password"}
-                source={require('../assets/icons/lock.png')}
-            />
-
-            <TouchableOpacity
-                style={{
-                    alignItems: "flex-end",
-                    alignSelf: "center",
-                    width: "80%",
-                    marginTop: 16
-                }}
-                onPress={() => props.navigation.navigate("forgotpassword")}>
-                <Text
-                    style={{
-                        color: primary,
-                        fontSize: 16
-                    }}>
-                    Forgot Password?
-                </Text>
-            </TouchableOpacity>
-            <CustomBtn
-                label={"Log in"} />
-
-
             <View
                 style={{
-                    alignItems: "center",
-                    alignSelf: "center",
-                    width: "80%",
+                    width: Dimensions.get("window").width,
+                    height: Dimensions.get("window").height,
+                    justifyContent: "space-evenly",
                 }}>
-                <Divider
-                    borderColor={grey}
-                    color={grey}
-                    orientation="center">
-                    <Text
-                        style={{ color: dark }} >OR
-                    </Text>
-                </Divider>
+                <View
+                    style={{
+                        flex: 1,
+                    }} />
+                <View
+                    style={{
+                        flex: 4,
+                    }}>
+                    <HeaderImg
+                        source={require('../assets/img/img_1.jpg')}
+                    />
+                </View>
+                <View
+                    style={{
+                        flex: 12,
+                    }}>
+
+                    <Header
+                        title={"Login"} />
+                    <InputField
+                        placeholder={"Email ID"}
+
+                        source={require('../assets/icons/a_email.png')}
+                    />
+                    <InputField
+                        placeholder={"Password"}
+                        source={require('../assets/icons/lock.png')}
+                        secureTextEntry={true}
+
+                    />
+
+                    <TouchableOpacity
+                        style={{
+                            alignItems: "flex-end",
+                            alignSelf: "center",
+                            width: "80%",
+                            marginTop: 16
+                        }}
+                        onPress={() => props.navigation.navigate("forgotpassword")}>
+                        <Text
+                            style={{
+                                color: primary,
+                                fontSize: 16
+                            }}>
+                            Forgot Password?
+                        </Text>
+                    </TouchableOpacity>
+                    <CustomBtn
+                        label={"Log in"} />
+
+
+                    <View
+                        style={{
+                            alignItems: "center",
+                            alignSelf: "center",
+                            width: "80%",
+                        }}>
+                        <Divider
+                            borderColor={grey}
+                            color={grey}
+                            orientation="center">
+                            <Text
+                                style={{ color: dark }} >OR
+                            </Text>
+                        </Divider>
+                    </View>
+                    <GoogleBtn />
+                    <LinkBtn
+                        text1={"New to Logistics? "}
+                        text2={"Register"}
+                        btnHandler={() => props.navigation.navigate("signup")} />
+                </View>
+
             </View>
-            <GoogleBtn />
-            <LinkBtn
-                text1={"New to Logistics? "}
-                text2={"Register"}
-                btnHandler={() => props.navigation.navigate("signup")} />
+
         </Background>
     );
 };
