@@ -40,7 +40,7 @@ const AuthScreen = (props) => {
                         }}>
                         <PhInputField />
 
-                        <ContinueBtn onPress={() => props.navigation.navigate("otpverification")} />
+                        <ContinueBtn onPress={() => props.navigation.navigate("tabcontroller")} />
 
                     </View>
 
