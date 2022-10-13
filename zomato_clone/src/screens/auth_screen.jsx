@@ -224,7 +224,7 @@ const AlternateAuthMeth = () => {
             style={{
                 marginVertical: 10,
                 flexDirection: "row",
-                justifyContent: "center"
+                justifyContent: "center",
             }}>
 
             <TouchableOpacity
