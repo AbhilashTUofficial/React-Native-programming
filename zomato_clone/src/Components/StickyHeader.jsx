@@ -108,10 +108,7 @@ const CategoryTabs = () => {
     return (
         <View
             style={{
-                paddingHorizontal: 16,
-                marginVertical: 10
-
-
+                marginVertical: 2
             }}>
             <ScrollView
                 horizontal
@@ -137,7 +134,9 @@ const Tab = ({ leading, label, trailing }) => {
         <TouchableOpacity
             style={{
                 height: 24,
-                margin: 6,
+                marginLeft: 16,
+                marginBottom: 12,
+                marginTop: 2,
                 elevation: 3,
                 borderRadius: 6,
                 shadowColor: secondary,

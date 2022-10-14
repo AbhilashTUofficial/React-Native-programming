@@ -246,7 +246,8 @@ const AlternateAuthMeth = () => {
             // onPress={}
             >
                 <ImageBackground
-                    source={require('../assets/icons/google_logo.png')} style={{
+                    source={require('../assets/icons/google_logo.png')}
+                    style={{
                         height: '100%',
                         width: "100%",
                         alignSelf: "center",

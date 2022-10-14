@@ -72,7 +72,7 @@ const Header = () => {
                         width: 36,
                         height: 36,
                         margin: 6,
-                        elevation: 6,
+                        elevation: 3,
                         borderRadius: 6,
                         shadowColor: secondary,
                         shadowOffset: { height: 4, width: 4 },

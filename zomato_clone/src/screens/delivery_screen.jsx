@@ -1,10 +1,15 @@
-import { Dimensions, ImageBackground, ScrollView, Text, TextInput, TouchableOpacity, View } from 'react-native';
+import { Dimensions, RefreshControl, ScrollView, View } from 'react-native';
 import React, { useState } from 'react';
 import Background from '../Components/Background';
-import { dark, darkGrey, grey, lightGrey, primary, secondary } from '../constants';
-import Divider from 'react-native-divider';
 import Header from '../Components/Header';
 import StickyHeader from '../Components/StickyHeader';
+import OfferBanner from '../Components/OfferBanner';
+import Heading from '../Components/Heading';
+import FoodTypesScrollView from '../Components/FoodTypesScrollView';
+import Recommended from '../Components/RecommendedScrollView';
+import BiryaniScrollView from '../Components/BiryaniScrollView';
+import RestaurantsScrollView from '../Components/RestaurantsScrollView';
+import SafeArea from '../Components/SafeArea';
 
 const DeliveryScreen = (props) => {
 
@@ -12,12 +17,21 @@ const DeliveryScreen = (props) => {
         <Header />,
         <StickyHeader />,
         <OfferBanner />,
-        <CheckThisOut />,
-        <EatWhatMakesYouHappy />,
+        <Heading label={"Check this out!"} />,
+        <OfferBanner />,
+        <Heading label={"Eat what makes you happy"} />,
+        <FoodTypesScrollView />,
+        <Heading label={"Recommended for you"} />,
         <Recommended />,
-        <AmazingOffers />
+        <Heading label={"Delicious biryani"} />,
+        <BiryaniScrollView />,
+        <Heading label={"All restaurants around you"} />,
+        <RestaurantsScrollView />,
+        <SafeArea />
 
     ];
+
+    const [refreshing, setRefreshing] = useState(false);
 
     return (
         <Background>
@@ -28,14 +42,16 @@ const DeliveryScreen = (props) => {
                 alignItems: "center"
             }}>
                 <View>
-
                     <ScrollView
                         stickyHeaderIndices={[1]}
                         showsVerticalScrollIndicator={false}
-                    >
-
+                        refreshControl={
+                            <RefreshControl
+                                refreshing={refreshing} />
+                        }>
 
                         {
+                            //TODO: Convert this to a flatlist
                             components.map((component) => {
                                 return (
                                     <View key={""}>
@@ -56,74 +72,3 @@ const DeliveryScreen = (props) => {
 };
 
 export default DeliveryScreen;
-
-
-
-
-
-
-
-const OfferBanner = () => {
-    return (
-        <View
-            style={{
-
-                height: 68,
-                width: Dimensions.get("screen").width,
-                backgroundColor: "pink",
-            }}
-        ></View>
-    );
-};
-
-const CheckThisOut = () => {
-    return (
-        <View
-            style={{
-
-                height: 180,
-                width: Dimensions.get("screen").width,
-                backgroundColor: "red",
-            }}
-        ></View>
-    );
-};
-
-const EatWhatMakesYouHappy = () => {
-    return (
-        <View
-            style={{
-
-                height: 180,
-                width: Dimensions.get("screen").width,
-                backgroundColor: "blue",
-            }}
-        ></View>
-    );
-};
-
-const Recommended = () => {
-    return (
-        <View
-            style={{
-
-                height: 200,
-                width: Dimensions.get("screen").width,
-                backgroundColor: "green",
-            }}
-        ></View>
-    );
-};
-
-const AmazingOffers = () => {
-    return (
-        <View
-            style={{
-
-                height: 200,
-                width: Dimensions.get("screen").width,
-                backgroundColor: "yellow",
-            }}
-        ></View>
-    );
-};
