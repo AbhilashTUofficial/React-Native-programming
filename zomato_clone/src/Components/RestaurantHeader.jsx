@@ -1,9 +1,8 @@
 import { lightGrey, secondary } from '../constants';
+import { View, Image, Text, TouchableOpacity } from 'react-native';
 
-const { View, Image, Text, TouchableOpacity } = require('react-native');
 
-
-const Header = () => {
+const Header = ({ goBackHandler }) => {
     return (
         <View
             style={{
@@ -23,12 +22,13 @@ const Header = () => {
                     alignItems: "center",
                     marginRight: 'auto'
                 }}>
-                <View
+                <TouchableOpacity
                     style={{
                         width: 26,
                         height: 26,
                         margin: 6,
-                    }}>
+                    }}
+                    onPress={goBackHandler}>
 
                     <Image
                         source={require('../assets/icons/previous.png')}
@@ -37,7 +37,7 @@ const Header = () => {
                             width: "100%",
                             alignSelf: "center",
                         }} />
-                </View>
+                </TouchableOpacity>
                 <Text
                     style={{
                         fontSize: 16,
