@@ -1,8 +1,9 @@
 import { Dimensions, ImageBackground, Text, TextInput, TouchableOpacity, View } from 'react-native';
-import React from 'react';
+import React, { useState } from 'react';
 import Background from '../Components/Background';
 import { dark, darkGrey, grey, lightGrey, primary, secondary } from '../constants';
 import Divider from 'react-native-divider';
+import { CountryPicker } from 'react-native-country-codes-picker';
 
 const AuthScreen = (props) => {
     return (
@@ -102,14 +103,24 @@ const Title = () => {
 };
 
 const PhInputField = () => {
+    const [show, setShow] = useState(false);
+
+    const handler = () => {
+        setShow(true);
+    };
+
     return (
         <View
             style={{
                 width: "100%",
                 flexDirection: "row",
             }}>
+            {
 
-            <View
+                // show ? <CountryPicker show={show} /> : <View />
+            }
+
+            <TouchableOpacity
                 style={{
                     borderColor: lightGrey,
                     height: 46,
@@ -121,7 +132,9 @@ const PhInputField = () => {
                     alignItems: "center",
                     justifyContent: "center"
 
-                }}>
+                }}
+                onPress={() => handler}
+            >
                 <View
                     style={{
                         height: 20,
@@ -148,7 +161,7 @@ const PhInputField = () => {
                         }} />
                 </View>
 
-            </View>
+            </TouchableOpacity>
 
 
             <View

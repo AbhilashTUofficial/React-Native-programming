@@ -1,12 +1,12 @@
 import { ScrollView, View } from 'react-native';
 import React, { useState } from 'react';
 import ElongatedCard from './ElongatedCard';
-import { BiriyaniList } from '../model/BiryaniList';
+import { BiryaniList, Restaurants } from '../model/ResturantsList';
 
 
 const BiryaniScrollView = () => {
 
-    const [items, setItems] = useState(BiriyaniList);
+    const [restaurants, setItems] = useState(Restaurants);
 
     return (
         <View
@@ -19,13 +19,15 @@ const BiryaniScrollView = () => {
                 horizontal
                 showsHorizontalScrollIndicator={false}>
                 {
-                    items.map((i) => {
-                        // const image = require(i.img);
-                        return (
-                            <ElongatedCard
-                                item={i}
-                                key={i.id} />
-                        );
+                    restaurants.map((i) => {
+                        if (BiryaniList.includes(i.id)) {
+                            return (
+                                <ElongatedCard
+                                    restaurant={i}
+                                    key={i.id} />
+                            );
+                        }
+
                     })}
             </ScrollView>
 

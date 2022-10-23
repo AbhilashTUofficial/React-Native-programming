@@ -1,12 +1,12 @@
 import { ScrollView, View } from 'react-native';
 import React, { useState } from 'react';
 import ElongatedCard from './ElongatedCard';
-import { RecommendedList } from '../model/RecommendedList';
+import { RecommendedList, Restaurants } from '../model/ResturantsList';
 
 
 const Recommended = () => {
 
-    const [items, setItems] = useState(RecommendedList);
+    const [restaurants, setItems] = useState(Restaurants);
 
     return (
         <View
@@ -19,13 +19,16 @@ const Recommended = () => {
                 horizontal
                 showsHorizontalScrollIndicator={false}>
                 {
-                    items.map((i) => {
-                        return (
-                            <ElongatedCard
-                                item={i}
-                                key={i.id} />
+                    restaurants.map((i) => {
+                        if (RecommendedList.includes(i.id)) {
+                            return (
+                                <ElongatedCard
+                                    restaurant={i}
+                                    key={i.id} />
 
-                        );
+                            );
+                        }
+
                     })}
             </ScrollView>
 

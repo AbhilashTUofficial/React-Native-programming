@@ -32,7 +32,7 @@ const ElongatedCard = (props) => {
                     alignItems: "center",
                     justifyContent: "center",
                 }}
-                onPress={() => navigation.navigate("restaurantscreen")}>
+                onPress={() => navigation.navigate("restaurantscreen", props.restaurant)}>
                 <View
                     style={{
                         alignItems: 'center',
@@ -43,7 +43,7 @@ const ElongatedCard = (props) => {
 
                     }}>
                     <Image
-                        source={props.item.img}
+                        source={props.restaurant.img}
                         style={{
                             borderTopRightRadius: 12,
                             borderTopLeftRadius: 12,
@@ -96,16 +96,16 @@ const ElongatedCard = (props) => {
                                 color: secondary,
                                 fontWeight: "500",
                                 marginVertical: 2,
-                            }}>{props.item.storeName}</Text>
+                            }}>{props.restaurant.storeName}</Text>
                         <View
-                            style={props.item.ratting > "4" ? {
+                            style={props.restaurant.ratting > "4" ? {
                                 height: 16,
                                 width: 28,
                                 borderRadius: 4,
                                 backgroundColor: "green",
                                 alignItems: "center"
 
-                            } : props.item.ratting > "3" ? {
+                            } : props.restaurant.ratting > "3" ? {
                                 height: 16,
                                 width: 28,
                                 borderRadius: 4,
@@ -134,7 +134,7 @@ const ElongatedCard = (props) => {
                                         fontSize: 12,
                                         fontWeight: "bold",
                                         color: "white",
-                                    }}>{props.item.ratting}</Text>
+                                    }}>{props.restaurant.ratting}</Text>
                                 <View
                                     style={{
                                         width: 10,
@@ -155,8 +155,8 @@ const ElongatedCard = (props) => {
                     </View>
 
 
-                    <Text>{props.item.travelTime}</Text>
-                    <Text>{props.item.cost}</Text>
+                    <Text>{props.restaurant.travelTime}</Text>
+                    <Text>{props.restaurant.cost}</Text>
 
 
                 </View>

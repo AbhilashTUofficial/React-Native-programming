@@ -1,5 +1,3 @@
-import { useState } from 'react';
-
 export const foodTypes = [
     { id: 1, text: "Biriyani", img: require('../assets/food_types/biryani.png') },
     { id: 2, text: "Burger", img: require('../assets/food_types/burger.png') },

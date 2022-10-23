@@ -6,18 +6,29 @@ import RestaurantDetails from '../Components/RestaurantDetails';
 import Header from '../Components/RestaurantHeader';
 import VegNonVeg from '../Components/VegNonVegTag';
 import CatergoryExpandable from '../Components/CategoryExpandable';
+import { useRoute } from '@react-navigation/native';
 
-const RestaurantViewScreen = (props) => {
+function RestaurantViewScreen({ navigation }) {
+    const route = useRoute();
     components = [
-        <Header goBackHandler={() => props.navigation.goBack()} />,
-        <RestaurantDetails />,
-        <VegNonVeg />,
-        <CatergoryExpandable />,
-        <HealthGuide />
+
     ];
 
     state = {
         headerColor: "white"
+    };
+
+    const res = {
+        id: route.params.id,
+        storeName: route.params.storeName,
+        img: route.params.img,
+        foodTypes: route.params.items,
+        travelTime: route.params.travelTime,
+        cost: route.params.const,
+        ratting: route.params.ratting,
+        categories: route.params.categories,
+        location: route.params.location,
+
     };
 
     listenScrollEvent = e => {
@@ -35,6 +46,10 @@ const RestaurantViewScreen = (props) => {
         // window.addEventListener('click', func);
 
     });
+    {
+        console.log(res.storeName);
+
+    }
 
     return (
         <Background>
@@ -53,16 +68,13 @@ const RestaurantViewScreen = (props) => {
                     <ScrollView
                         stickyHeaderIndices={[0]}
                         showsVerticalScrollIndicator={false}>
-                        {
-                            //TODO: Convert this to a flatlist
-                            components.map((component) => {
-                                return (
-                                    <View key={""}>
-                                        {component}
-                                    </View>
-                                );
-                            })
-                        }
+
+                        <Header goBackHandler={() => navigation.goBack()} />
+                        <RestaurantDetails restaurant={res} />
+                        <VegNonVeg />
+                        <CatergoryExpandable />
+                        <HealthGuide />
+
                     </ScrollView>
 
                 </View>
@@ -74,12 +86,6 @@ const RestaurantViewScreen = (props) => {
 };
 
 export default RestaurantViewScreen;
-
-
-
-
-
-
 
 
 const HealthGuide = () => {

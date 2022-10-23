@@ -2,7 +2,7 @@ import { Dimensions, Image, ScrollView, Text, View } from 'react-native';
 import { darkGrey, lightGrey, secondary } from '../constants';
 
 
-const RestaurantDetails = () => {
+const RestaurantDetails = (props) => {
     return (
         <View
             style={{
@@ -44,17 +44,17 @@ const RestaurantDetails = () => {
                             fontSize: 24,
                             fontWeight: "500",
                             color: secondary
-                        }}>Bamboo Mess</Text>
+                        }}>{props.restaurant.storeName}</Text>
                         <Text style={{
                             fontSize: 12,
                             fontWeight: "500",
                             color: secondary
-                        }}>South Indian, Chinese, Arabian</Text>
+                        }}>{props.restaurant.foodTypes}</Text>
                         <Text style={{
                             fontSize: 12,
                             fontWeight: "500",
                             color: darkGrey
-                        }}>Sulthan Bathery Locality, Sulthan Bathery</Text>
+                        }}>{props.restaurant.location}</Text>
 
 
 
