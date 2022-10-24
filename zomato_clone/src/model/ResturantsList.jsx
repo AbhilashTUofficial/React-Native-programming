@@ -17,7 +17,27 @@ export const Restaurants = [
         travelTime: "40 min. 2km",
         cost: "150 for one",
         ratting: "4.6",
-        categories: ["Recommended"]
+        categories: [
+            {
+                title: "Recommended",
+                items: [{
+                    itemTitle: "Chicken Burger Combo",
+                },
+                {
+                    itemTitle: "Chicken Cheese Burger",
+                }
+                ]
+            },
+            {
+                title: "Special",
+                items: [{
+                    itemTitle: "Chicken Burger Combo",
+
+                }]
+            }
+        ],
+
+
     },
     {
         id: 2,

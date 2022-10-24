@@ -1,36 +1,15 @@
-import { Animated, Dimensions, Image, RefreshControl, ScrollView, StatusBar, Text, TouchableHighlightBase, TouchableOpacity, View } from 'react-native';
+import { Animated, Image, Text, TouchableOpacity, View } from 'react-native';
 import React, { useEffect, useState } from 'react';
-import Background from '../Components/Background';
 import { darkGrey, lightGrey, primary, secondary } from '../constants';
-import RestaurantDetails from '../Components/RestaurantDetails';
-import Header from '../Components/RestaurantHeader';
-import VegNonVeg from '../Components/VegNonVegTag';
 
-const CatergoryExpandable = () => {
-    const Categories = [
-        {
-            id: "1",
-            title: "Recommended",
-            items: [
-                ["Item name", "price", "item url",],
-                ["Item name", "price", "item url",]
-            ]
-        },
-        {
-            id: "2",
-            title: "Special",
-            items: [
-                ["Item name", "price", "item url",],
-                ["Item name", "price", "item url",]
-            ]
-        }
-    ];
+const CatergoryExpandable = (props) => {
+
     return (
         <View>
             {
-                Categories.map((category) => {
+                props.categories.map((category) => {
                     return (
-                        <ItemView cat={category} />
+                        <ItemView catagory={category} />
                     );
                 })
             }
@@ -40,46 +19,150 @@ const CatergoryExpandable = () => {
 
 export default CatergoryExpandable;
 
-const ItemView = ({ cat }) => {
+const ItemView = (props) => {
     const [isExpanded, setIsExpanded] = useState(false);
     return (
         <View
             style={{
                 flex: 1,
                 backgroundColor: "white",
-
+                paddingVertical: 8,
             }}>
             <TouchableOpacity
+                style={{
+                    flexDirection: "row",
+                    justifyContent: "space-between",
+                    paddingHorizontal: 16,
+                    paddingVertical: 12
+                }}
                 onPress={() => {
                     setIsExpanded(!isExpanded);
                 }}>
-                <Text >{cat.title}</Text>
+                <Text
+                    style={{
+                        color: secondary,
+                        fontSize: 18,
+                        fontWeight: "500"
+                    }} >{props.catagory.title} ({props.catagory.items.length})</Text>
+
+                <View
+                    style={{
+                        height: 18,
+                        width: 18,
+                        marginRight: 2
+                    }}>
+                    <Image
+                        source={
+                            isExpanded ? require('../assets/icons/dropdown3.png') : require('../assets/icons/dropdown3.1.png')
+                        }
+                        style={{
+                            height: '100%',
+                            width: "100%",
+                            alignSelf: "center",
+                        }} />
+                </View>
             </TouchableOpacity>
-            <ExpandableView expanded={isExpanded} />
+
+
+            <ExpandableView
+                expanded={isExpanded}
+                items={props.catagory.items}
+            />
         </View>
     );
 };
 
 
-const ExpandableView = ({ expanded = false }) => {
+const ExpandableView = ({ expanded = false, items }) => {
     const [height] = useState(new Animated.Value(0));
 
     useEffect(() => {
         Animated.timing(height, {
-            toValue: !expanded ? 200 : 0,
-            duration: 150,
+            toValue: !expanded ? 140 : 0,
+            duration: 100,
             useNativeDriver: false
         }).start();
     }, [expanded, height]);
-
-    // console.log('rerendered');
-
+    console.log(items);
     return (
         <Animated.View
             style={{
                 height,
-                backgroundColor: "white"
-            }}
-        ></Animated.View>
+                backgroundColor: "white",
+                borderColor: "transparent",
+                borderBottomColor: lightGrey,
+                borderWidth: 1,
+            }}>
+            {
+                !expanded ?
+                    items.map((i) => {
+                        return (
+                            <View
+                                style={{
+                                    marginTop: 4,
+                                    marginBottom: 8,
+                                    marginHorizontal: 16
+
+                                }}>
+                                <View
+                                    style={{
+                                        flexDirection: "row",
+                                        justifyContent: "space-between",
+                                        alignItems: "flex-end"
+                                    }}>
+                                    <View
+                                        style={{
+                                            justifyContent: "space-between",
+                                            height: 46
+                                        }}>
+                                        <Text>
+                                            bestseller
+                                        </Text>
+                                        <Text
+                                            style={{
+                                                color: secondary,
+                                                fontSize: 16,
+                                                fontWeight: "500",
+
+                                            }}>
+                                            {i.itemTitle}
+                                        </Text>
+
+                                    </View>
+                                    <AddBtn />
+                                </View>
+                            </View>
+                        );
+                    }) : null
+            }
+
+
+        </Animated.View>
+    );
+};
+
+const AddBtn = () => {
+    return (
+        <TouchableOpacity
+            style={{
+                margin: 2,
+                backgroundColor: "#FFF7FA",
+                height: 32,
+                width: 108,
+                borderWidth: 0.6,
+                borderColor: primary,
+                borderRadius: 4,
+                alignItems: "center",
+                justifyContent: "center"
+            }}>
+            <Text
+                style={{
+                    alignSelf: "center",
+                    fontWeight: 'bold',
+                    color: primary,
+
+                }}
+            >ADD</Text>
+        </TouchableOpacity>
     );
 };

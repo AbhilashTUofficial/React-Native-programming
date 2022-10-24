@@ -18,38 +18,15 @@ function RestaurantViewScreen({ navigation }) {
         headerColor: "white"
     };
 
-    const res = {
+    const resturantDetails = {
         id: route.params.id,
         storeName: route.params.storeName,
-        img: route.params.img,
         foodTypes: route.params.items,
         travelTime: route.params.travelTime,
-        cost: route.params.const,
         ratting: route.params.ratting,
-        categories: route.params.categories,
         location: route.params.location,
-
     };
-
-    listenScrollEvent = e => {
-        if (window.scrollY > 40) {
-            this.setState({ headerColor: 'black' });
-        } else {
-            this.setState({ headerColor: 'white' });
-        }
-    };
-    const func = () => {
-        console.log("hi");
-    };
-
-    useEffect(() => {
-        // window.addEventListener('click', func);
-
-    });
-    {
-        console.log(res.storeName);
-
-    }
+    const categories = route.params.categories;
 
     return (
         <Background>
@@ -70,9 +47,9 @@ function RestaurantViewScreen({ navigation }) {
                         showsVerticalScrollIndicator={false}>
 
                         <Header goBackHandler={() => navigation.goBack()} />
-                        <RestaurantDetails restaurant={res} />
+                        <RestaurantDetails restaurant={resturantDetails} />
                         <VegNonVeg />
-                        <CatergoryExpandable />
+                        <CatergoryExpandable categories={categories} />
                         <HealthGuide />
 
                     </ScrollView>
