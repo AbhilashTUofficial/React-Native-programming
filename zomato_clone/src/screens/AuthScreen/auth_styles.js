@@ -15,7 +15,7 @@ export const authStyles = StyleSheet.create({
 
   title: {
     color: secondary,
-    margin: 8,
+    margin: 4,
     fontSize: 22,
     fontWeight: 'bold',
     flexWrap: 'wrap',

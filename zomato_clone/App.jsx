@@ -2,12 +2,11 @@ import * as React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { StatusBar } from 'react-native';
-// import AuthScreen from './src/screens/AuthScreen/auth_screen';
 import DeliveryScreen from './src/screens/delivery_screen';
 import TabController from './src/screens/tab_controller';
-import OTPVerifyScreen from './src/screens/OTP_verify_screen';
 import RestaurantViewScreen from './src/screens/restaurant_view_screen';
 import AuthScreen from './src/screens/AuthScreen/auth_screen';
+import OTPVerifyScreen from './src/screens/OtpVerifyScreen/otp_verify_screen';
 // import SplashScreen from 'react-native-splash-screen';
 
 const Stack = createNativeStackNavigator();
