@@ -6,25 +6,25 @@ import { Restaurants } from '../model/ResturantsList';
 
 const RestaurantsScrollView = () => {
 
-    const [stores, setItems] = useState(Restaurants);
+    const [restaurants, setItems] = useState(Restaurants);
 
     return (
-        <View
-            style={{
 
-                width: "100%",
-                paddingVertical: 6
-            }}>
-            <ScrollView
-                showsHorizontalScrollIndicator={false}>
+        <View style={{ paddingVertical: 6 }}>
+
+            <ScrollView showsHorizontalScrollIndicator={false}>
+
                 {
-                    stores.map((i) => {
+                    restaurants.map((i) => {
+
                         return (
                             <RestaurantCard
-                                store={i}
+                                restaurant={i}
                                 key={i.id} />
                         );
-                    })}
+                    })
+                }
+
             </ScrollView>
 
         </View>

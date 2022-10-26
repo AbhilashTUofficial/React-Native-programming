@@ -83,7 +83,7 @@ const ExpandableView = ({ expanded = false, items }) => {
             useNativeDriver: false
         }).start();
     }, [expanded, height]);
-    console.log(items);
+    // console.log(items);
     return (
         <Animated.View
             style={{

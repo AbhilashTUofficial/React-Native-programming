@@ -2,7 +2,6 @@ import * as React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { StatusBar } from 'react-native';
-import DeliveryScreen from './src/screens/delivery_screen';
 import TabController from './src/screens/tab_controller';
 import RestaurantViewScreen from './src/screens/restaurant_view_screen';
 import AuthScreen from './src/screens/AuthScreen/auth_screen';

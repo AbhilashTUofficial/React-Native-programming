@@ -4,7 +4,7 @@
 export const RecommendedList = [1, 2, 3, 4];
 
 // Biryani Restaurant ID
-export const BiryaniList = [3, 2, 1, 5];
+export const BiryaniList = [3, 2, 5];
 
 // All Restaurants
 export const Restaurants = [
@@ -14,7 +14,8 @@ export const Restaurants = [
         img: require('../assets/food_items/biryani_item.png'),
         items: "Fast Food, Burger, Biryani",
         location: "Sulthan Bathery Locality, Sulthan Bathery",
-        travelTime: "40 min. 2km",
+        travelTime: "40 min",
+        distance: "2km",
         cost: "150 for one",
         ratting: "4.6",
         categories: [
@@ -44,36 +45,48 @@ export const Restaurants = [
         storeName: "KFC",
         img: require('../assets/food_items/burger_item.png'),
         items: "South Indian",
-        travelTime: "40 min. 2km",
+        location: "Sulthan Bathery Locality, Sulthan Bathery",
+        travelTime: "40 min",
+        distance: "2km",
         cost: "150 for one",
-        ratting: "3.8"
+        ratting: "3.8",
+        categories: [],
     },
     {
         id: 3,
         storeName: "Star Kitchen",
         img: require('../assets/food_items/cheesefries_item.png'),
         items: "Fast Food, Burger, Biryani",
-        travelTime: "40 min. 2km",
+        location: "Sulthan Bathery Locality, Sulthan Bathery",
+        travelTime: "40 min",
+        distance: "2km",
         cost: "150 for one",
-        ratting: "4.0"
+        ratting: "4.0",
+        categories: [],
     },
     {
         id: 4,
         storeName: "Chicking",
         img: require('../assets/food_items/chickencurry_item.png'),
         items: "South Indian",
-        travelTime: "40 min. 2km",
+        location: "Sulthan Bathery Locality, Sulthan Bathery",
+        travelTime: "40 min",
+        distance: "2km",
         cost: "150 for one",
-        ratting: "4.2"
+        ratting: "4.2",
+        categories: [],
     },
     {
         id: 5,
         storeName: "Biriyani Hut",
         img: require('../assets/food_items/soup_item.png'),
         items: "Fast Food, Burger, Biryani",
-        travelTime: "40 min. 2km",
+        location: "Sulthan Bathery Locality, Sulthan Bathery",
+        travelTime: "40 min",
+        distance: "2km",
         cost: "150 for one",
-        ratting: "2.6"
+        ratting: "2.6",
+        categories: [],
     },
 
 ];

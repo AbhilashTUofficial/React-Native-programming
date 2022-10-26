@@ -1,10 +1,10 @@
 import { ImageBackground, StatusBar, View } from "react-native";
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import DeliveryScreen from "./delivery_screen";
 import { darkGrey, lightGrey, primary, secondary } from "../constants";
 import MoneyScreen from "./money_screen";
 import ZomalandScreen from "./zomaland_screen";
 import HistoryScreen from "./history_screen";
+import DeliveryScreen from "./DeliveryScreen/delivery_screen";
 
 
 

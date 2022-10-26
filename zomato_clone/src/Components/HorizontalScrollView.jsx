@@ -1,10 +1,10 @@
 import { ScrollView, View } from 'react-native';
 import React, { useState } from 'react';
 import ElongatedCard from './ElongatedCard';
-import { BiryaniList, Restaurants } from '../model/ResturantsList';
+import { Restaurants } from '../model/ResturantsList';
 
 
-const BiryaniScrollView = () => {
+const HorizontalScrollView = (props) => {
 
     const [restaurants, setItems] = useState(Restaurants);
 
@@ -20,11 +20,12 @@ const BiryaniScrollView = () => {
                 showsHorizontalScrollIndicator={false}>
                 {
                     restaurants.map((i) => {
-                        if (BiryaniList.includes(i.id)) {
+                        if (props.list.includes(i.id)) {
                             return (
                                 <ElongatedCard
                                     restaurant={i}
                                     key={i.id} />
+
                             );
                         }
 
@@ -35,5 +36,5 @@ const BiryaniScrollView = () => {
     );
 };
 
-export default BiryaniScrollView;
+export default HorizontalScrollView;
 

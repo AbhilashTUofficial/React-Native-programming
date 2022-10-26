@@ -7,7 +7,7 @@ const Heading = ({ label }) => {
     return (
         <View
             style={{
-                paddingHorizontal: 16,
+                paddingHorizontal: 12,
                 paddingVertical: 6,
                 marginTop: 12
             }}>

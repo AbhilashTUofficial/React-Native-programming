@@ -1,26 +1,24 @@
-import { View } from 'react-native';
+import { Image } from 'react-native';
 import React from 'react';
 
 
-const OfferBanner = () => {
+const OfferBanner = (props) => {
     return (
-        <View
+
+        <Image
+            {...props}
             style={{
-
-                width: "100%",
-                paddingHorizontal: 16,
-                paddingVertical: 6
+                height: 96,
+                width: "94%",
+                alignSelf: "center",
+                backgroundColor: "#F1F3FF",
+                borderRadius: 8,
+                marginHorizontal: 12,
+                marginVertical: 6,
             }}>
-            <View
-                style={{
-                    height: 80,
-                    backgroundColor: "#F1F3FF",
-                    borderRadius: 8,
-                }}>
 
-            </View>
+        </Image>
 
-        </View>
     );
 };
 

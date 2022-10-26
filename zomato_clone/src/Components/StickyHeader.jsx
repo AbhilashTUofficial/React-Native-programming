@@ -1,14 +1,13 @@
-import { ImageBackground, ScrollView, Text, TouchableOpacity, View } from 'react-native';
+import { Image, ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import React from 'react';
 import { lightGrey, secondary } from '../constants';
 
 const StickyHeader = () => {
     return (
-        <View
-            style={{
-                backgroundColor: "white",
-            }}>
+        <View style={{ backgroundColor: "white" }}>
+
             <SearchBar />
+
             <CategoryTabs />
 
         </View>
@@ -20,78 +19,26 @@ export default StickyHeader;
 
 const SearchBar = () => {
     return (
-        <View
-            style={{
-                height: 40,
-                justifyContent: "space-between",
-                alignItems: "center",
-                paddingHorizontal: 16,
-                flexDirection: "row",
-                borderWidth: 1,
-                borderRadius: 12,
-                borderColor: lightGrey,
-                backgroundColor: "#F6F6F6",
-                marginVertical: 10,
-                marginHorizontal: 16
-            }}>
-            <View
-                style={{
-                    flexDirection: "row",
-                    alignItems: "center",
-                }}>
-                <View
-                    style={{
-                        width: 26,
-                        height: 26,
-                        marginVertical: 6,
-                    }}>
+        <View style={SearchBarStyles.container}>
 
-                    <ImageBackground
-                        source={require('../assets/icons/search.png')}
-                        style={{
-                            height: '100%',
-                            width: "100%",
-                            alignSelf: "center",
-                        }} />
-                </View>
-                <Text
-                    style={{
-                        marginHorizontal: 8,
-                    }}>Restaurant name or a dish name</Text>
+            <View style={SearchBarStyles.contAlgnment}>
+
+                <Image source={require('../assets/icons/search.png')}
+                    style={SearchBarStyles.searchIcon} />
+
+                <Text style={{ marginHorizontal: 8, }}>
+                    Restaurant name or a dish name</Text>
+
             </View >
 
-            <View
-                style={{
-                    flexDirection: "row",
-                    alignItems: "center",
-                }}>
-                <View
-                    style={{
-                        backgroundColor: lightGrey,
-                        width: 2,
-                        height: 28,
-                        marginHorizontal: 6
-                    }}>
+            <View style={SearchBarStyles.contAlgnment}>
 
-                </View>
-                <View
-                    style={{
-                        width: 26,
-                        height: 26,
-                        marginVertical: 6,
-                    }}>
+                <View style={SearchBarStyles.vDiv} />
 
-                    <ImageBackground
-                        source={require('../assets/icons/mic.png')}
-                        style={{
-                            height: '100%',
-                            width: "100%",
-                            alignSelf: "center",
-                        }} />
-                </View>
+                <Image source={require('../assets/icons/mic.png')}
+                    style={SearchBarStyles.micIcon} />
+
             </View>
-
-
 
         </View>
     );
@@ -99,32 +46,30 @@ const SearchBar = () => {
 
 const CategoryTabs = () => {
     components = [
+
         <Tab label={"Sort"} trailing={true} leading={true} />,
+
         <Tab label={"Fast Delivery"} />,
+
         <Tab label={"Rating 4.0+"} />,
+
         <Tab label={"Cuisines"} trailing={true} />,
+
         <Tab label={"More"} trailing={true} />,
     ];
     return (
-        <View
-            style={{
-                marginVertical: 2
-            }}>
-            <ScrollView
-                horizontal
-                showsHorizontalScrollIndicator={false}
-            >
-                {
-                    components.map((component) => {
-                        return (
-                            <View key={""}>
-                                {component}
-                            </View>
-                        );
-                    })
-                }
-            </ScrollView>
-        </View>
+
+        <ScrollView horizontal showsHorizontalScrollIndicator={false}>
+            {
+                components.map((component) => {
+                    return (
+                        <View key={""}>
+                            {component}
+                        </View>
+                    );
+                })
+            }
+        </ScrollView>
     );
 };
 
@@ -132,62 +77,86 @@ const Tab = ({ leading, label, trailing }) => {
     return (
 
         <TouchableOpacity
-            style={{
-                height: 24,
-                marginLeft: 16,
-                marginBottom: 12,
-                marginTop: 2,
-                elevation: 3,
-                borderRadius: 6,
-                shadowColor: secondary,
-                shadowOffset: { height: 4, width: 4 },
-                shadowOpacity: 1,
-                shadowRadius: 1,
-                paddingHorizontal: 12,
-                paddingVertical: 2,
-                backgroundColor: "white",
-                flexDirection: "row",
-                alignItems: "center"
-
-            }}>
+            activeOpacity={0.8}
+            style={CategoryTabStyles.tabCont}>
 
             {
-                leading ? <View
-                    style={{
-                        height: 12,
-                        width: 10,
-                        marginRight: 4
-                    }}>
-                    <ImageBackground
-                        source={require('../assets/icons/sort.png')} style={{
-
-                            height: '100%',
-                            width: "100%",
-                            alignSelf: "center",
-                        }} />
-                </View> : null
+                leading ? <Image source={require('../assets/icons/sort.png')}
+                    style={CategoryTabStyles.tabIcon} />
+                    : null
             }
 
-            <Text
-                style={{
-                    color: secondary
-                }}>{label}</Text>
-            {
-                trailing ? <View
-                    style={{
-                        height: 12,
-                        width: 10,
-                        marginLeft: 4
-                    }}>
-                    <ImageBackground
-                        source={require('../assets/icons/dropdown3.png')} style={{
+            <Text style={{ color: secondary }}>{label}</Text>
 
-                            height: '100%',
-                            width: "100%",
-                            alignSelf: "center",
-                        }} />
-                </View> : null
+            {
+                trailing ?
+                    <Image
+                        source={require('../assets/icons/dropdown3.png')}
+                        style={CategoryTabStyles.tabIcon} /> : null
             }
         </TouchableOpacity>
     );
 };
+
+
+const SearchBarStyles = StyleSheet.create({
+    container: {
+        height: 46,
+        justifyContent: "space-between",
+        alignItems: "center",
+        paddingHorizontal: 12,
+        flexDirection: "row",
+        borderWidth: 1,
+        borderRadius: 12,
+        borderColor: lightGrey,
+        backgroundColor: "#F6F6F6",
+        marginVertical: 12,
+        marginHorizontal: 12,
+    },
+    contAlgnment: {
+        flexDirection: 'row',
+        alignItems: 'center',
+    },
+    searchIcon: {
+        width: 22,
+        height: 22,
+        alignSelf: "center",
+    },
+    vDiv: {
+        backgroundColor: lightGrey,
+        width: 2,
+        height: 28,
+        marginHorizontal: 12
+    },
+    micIcon: {
+        width: 22,
+        height: 22,
+        alignSelf: "center",
+    },
+
+});
+const CategoryTabStyles = StyleSheet.create({
+    tabCont: {
+        height: 34,
+        marginLeft: 12,
+        marginBottom: 12,
+        marginTop: 2,
+        elevation: 3,
+        borderRadius: 8,
+        shadowColor: secondary,
+        shadowOffset: { height: 4, width: 4 },
+        shadowOpacity: 1,
+        shadowRadius: 1,
+        paddingHorizontal: 12,
+        paddingVertical: 2,
+        backgroundColor: "white",
+        flexDirection: "row",
+        alignItems: "center"
+    },
+    tabIcon: {
+        height: 12,
+        width: 12,
+        marginHorizontal: 4,
+        alignSelf: "center",
+    },
+});
