@@ -1,6 +1,6 @@
 import { Animated, Dimensions, Image, RefreshControl, ScrollView, StatusBar, Text, TouchableHighlightBase, TouchableOpacity, View } from 'react-native';
 import React, { useEffect, useState } from 'react';
-import Background from '../Components/Background';
+import Wrapper from '../Components/Wrapper';
 import { darkGrey, lightGrey, primary, secondary } from '../constants';
 import RestaurantDetails from '../Components/RestaurantDetails';
 import Header from '../Components/RestaurantHeader';
@@ -29,7 +29,7 @@ function RestaurantViewScreen({ navigation }) {
     const categories = route.params.categories;
 
     return (
-        <Background>
+        <Wrapper>
             <StatusBar translucent backgroundColor="transparent" />
 
             <View style={{
@@ -58,7 +58,7 @@ function RestaurantViewScreen({ navigation }) {
 
             </View>
 
-        </Background>
+        </Wrapper>
     );
 };
 

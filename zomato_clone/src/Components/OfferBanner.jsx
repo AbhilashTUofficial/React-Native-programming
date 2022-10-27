@@ -1,7 +1,8 @@
 import { Image } from 'react-native';
 import React from 'react';
 
-
+//? OfferBanner return a image banner if the app
+//? has any special offers.
 const OfferBanner = (props) => {
     return (
 

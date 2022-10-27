@@ -1,7 +1,7 @@
 import { Image, ImageBackground, Text, TextInput, TouchableOpacity, View } from 'react-native';
 import { authStyles, dropdownIcon, flagImg, googleLogo, headerImg, viewmoreIcon, languageIcon } from './auth_styles';
-import React, { useState } from 'react';
-import Background from '../../Components/Background';
+import { React } from 'react';
+import Wrapper from '../../Components/Wrapper';
 import { darkGrey, grey, lightGrey } from '../../constants';
 import Divider from 'react-native-divider';
 import { commonStyles } from '../common_styles';
@@ -9,7 +9,8 @@ import { commonStyles } from '../common_styles';
 const AuthScreen = (props) => {
 
     return (
-        <Background>
+
+        <Wrapper>
 
             <View style={commonStyles.container}>
 
@@ -23,7 +24,10 @@ const AuthScreen = (props) => {
 
                     {
                         // TODO: Nedd to look at this.
+                        // The phone number input componet is not aligning correctly.
                     }
+
+                    {/* User input fields */}
 
                     <View style={{ justifyContent: "center" }}>
 
@@ -45,7 +49,7 @@ const AuthScreen = (props) => {
 
             </View>
 
-        </Background>
+        </Wrapper>
     );
 };
 

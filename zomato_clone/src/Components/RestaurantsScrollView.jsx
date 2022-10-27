@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import RestaurantCard from './RestaurantCard';
 import { Restaurants } from '../model/ResturantsList';
 
-
+//? All Restaurants available 
 const RestaurantsScrollView = () => {
 
     const [restaurants, setItems] = useState(Restaurants);
@@ -15,6 +15,8 @@ const RestaurantsScrollView = () => {
             <ScrollView showsHorizontalScrollIndicator={false}>
 
                 {
+                    //! Loop through all restaurants and pass the 
+                    //! data to RestaurantCard (component).
                     restaurants.map((i) => {
 
                         return (

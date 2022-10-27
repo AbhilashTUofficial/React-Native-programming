@@ -14,6 +14,9 @@ const FoodTypesScrollView = () => {
             horizontal
             showsHorizontalScrollIndicator={false}>
             {
+                //! loop through the foodtypes and return a
+                //! circular components for each.
+
                 items.map((i) => {
                     return (
 
@@ -29,6 +32,7 @@ const FoodTypesScrollView = () => {
 export default FoodTypesScrollView;
 
 
+//? Circular component
 const CircularCard = (props) => {
     return (
 

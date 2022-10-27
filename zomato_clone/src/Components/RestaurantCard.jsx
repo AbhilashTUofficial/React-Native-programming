@@ -2,29 +2,22 @@ import { useNavigation } from '@react-navigation/native';
 import React, { Component, useState } from 'react';
 import { Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import { secondary } from '../constants';
+import RattingTag from './RattingTag';
 
-const rattingColors = [
-    "white",
-    "red",
-    "tomato",
-    "gold",
-    "#24963F",
-    "#24963F",
-];
-
-const rattingIcon = require('../assets/icons/star.png');
+//? Icons
 const favIcon = require('../assets/icons/heart_active.png');
 const notFavIcon = require('../assets/icons/heart_inactive.png');
 
 const RestaurantCard = (props) => {
 
+    //? Data
     const img = props.restaurant.img;
     const storeName = props.restaurant.storeName;
     const items = props.restaurant.items;
     const cost = props.restaurant.cost;
     const travelTime = props.restaurant.travelTime;
     const distance = props.restaurant.distance;
-    var ratting = props.restaurant.ratting.substring(0, 1);
+    const ratting = props.restaurant.ratting;
     const [faved, setFav] = useState(false);
     const navigation = useNavigation();
 
@@ -33,6 +26,8 @@ const RestaurantCard = (props) => {
         <TouchableOpacity activeOpacity={0.8} style={RestaurantCardStyles.card}
             onPress={() => navigation.navigate("restaurantscreen", props.restaurant)}>
 
+
+            {/* //? Header part */}
             <View style={RestaurantCardStyles.header}>
 
                 <Image source={img} style={RestaurantCardStyles.img} />
@@ -54,6 +49,7 @@ const RestaurantCard = (props) => {
 
             </View>
 
+            {/* //? Body part */}
             <View style={RestaurantCardStyles.body}>
 
                 <View style={RestaurantCardStyles.titleCont}>
@@ -61,20 +57,8 @@ const RestaurantCard = (props) => {
                     <Text style={RestaurantCardStyles.titleText}>
                         {storeName}</Text>
 
-                    <View style={[RestaurantCardStyles.ratting,
-                    { backgroundColor: rattingColors[ratting] }]} >
+                    <RattingTag ratting={ratting} />
 
-                        <View style={RestaurantCardStyles.rattingTag}>
-
-                            <Text style={RestaurantCardStyles.rattingText}>
-                                {props.restaurant.ratting}</Text>
-
-                            <Image source={rattingIcon}
-                                style={RestaurantCardStyles.rattingIcon} />
-
-                        </View>
-
-                    </View>
                 </View>
                 <View
                     style={RestaurantCardStyles.resDetails}>
@@ -90,6 +74,8 @@ const RestaurantCard = (props) => {
 };
 
 export default RestaurantCard;
+
+//? Styles
 
 const RestaurantCardStyles = StyleSheet.create({
     card: {
@@ -165,28 +151,6 @@ const RestaurantCardStyles = StyleSheet.create({
         width: "100%",
         alignSelf: "center",
         justifyContent: "center"
-    },
-    ratting: {
-        height: 16,
-        width: 34,
-        borderRadius: 4,
-        alignItems: "center"
-    },
-    rattingText: {
-        fontSize: 12,
-        fontWeight: "bold",
-        color: "white",
-    },
-    rattingTag: {
-        flexDirection: 'row',
-        alignItems: "center",
-        justifyContent: "space-evenly",
-        width: "100%"
-    },
-    rattingIcon: {
-        width: 10,
-        height: 10,
-        alignSelf: "center",
     },
     resText: {
         fontWeight: "400",

@@ -16,14 +16,17 @@ const StickyHeader = () => {
 
 export default StickyHeader;
 
+const searchIcon = require('../assets/icons/search.png');
+const micIcon = require('../assets/icons/mic.png');
 
+//? Search bar
 const SearchBar = () => {
     return (
         <View style={SearchBarStyles.container}>
 
             <View style={SearchBarStyles.contAlgnment}>
 
-                <Image source={require('../assets/icons/search.png')}
+                <Image source={searchIcon}
                     style={SearchBarStyles.searchIcon} />
 
                 <Text style={{ marginHorizontal: 8, }}>
@@ -35,7 +38,7 @@ const SearchBar = () => {
 
                 <View style={SearchBarStyles.vDiv} />
 
-                <Image source={require('../assets/icons/mic.png')}
+                <Image source={micIcon}
                     style={SearchBarStyles.micIcon} />
 
             </View>
@@ -44,6 +47,7 @@ const SearchBar = () => {
     );
 };
 
+//? Category tabs
 const CategoryTabs = () => {
     components = [
 
@@ -98,7 +102,7 @@ const Tab = ({ leading, label, trailing }) => {
     );
 };
 
-
+//? Styles
 const SearchBarStyles = StyleSheet.create({
     container: {
         height: 46,

@@ -13,20 +13,29 @@ const Stack = createNativeStackNavigator();
 function App() {
   return (
     <>
+      {/* StatusBar translucent make it, that the UI goes under status bar */}
       <StatusBar translucent backgroundColor="transparent" />
+
       <NavigationContainer>
-        <Stack.Navigator
-          screenOptions={{
-            headerShown: false,
-          }}>
+
+        <Stack.Navigator screenOptions={{ headerShown: false }}>
+
+          {/* Screens */
+            //TODO: Need to add splash screen in here
+          }
+
           <Stack.Screen name='authscreen' component={AuthScreen} />
+
           <Stack.Screen name='otpverification' component={OTPVerifyScreen} />
+
           <Stack.Screen name='tabcontroller' component={TabController} />
+
           <Stack.Screen name='restaurantscreen' component={RestaurantViewScreen} />
 
-
         </Stack.Navigator>
+
       </NavigationContainer>
+
     </>
   );
 }

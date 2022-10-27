@@ -1,6 +1,6 @@
 import { RefreshControl, ScrollView, View } from 'react-native';
 import React, { useState } from 'react';
-import Background from '../../Components/Background';
+import Wrapper from '../../Components/Wrapper';
 import Header from '../../Components/Header';
 import StickyHeader from '../../Components/StickyHeader';
 import OfferBanner from '../../Components/OfferBanner';
@@ -14,6 +14,7 @@ import { BiryaniList, RecommendedList } from '../../model/ResturantsList';
 
 const DeliveryScreen = (props) => {
 
+    // ? Array of componets
     components = [
 
         <Header />,
@@ -49,7 +50,7 @@ const DeliveryScreen = (props) => {
     const [refreshing, setRefreshing] = useState(false);
 
     return (
-        <Background>
+        <Wrapper>
 
             <View style={commonStyles.container}>
 
@@ -57,6 +58,9 @@ const DeliveryScreen = (props) => {
                     refreshControl={<RefreshControl refreshing={refreshing} />}>
 
                     {
+                        //! Loop through the componets array and return each only 
+                        //! in order
+
                         //TODO: Convert this to a flatlist
                         components.map((component) => {
                             return (
@@ -71,7 +75,7 @@ const DeliveryScreen = (props) => {
 
             </View>
 
-        </Background>
+        </Wrapper>
     );
 };
 

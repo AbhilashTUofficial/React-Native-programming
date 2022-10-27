@@ -3,7 +3,8 @@ import React, { useState } from 'react';
 import ElongatedCard from './ElongatedCard';
 import { Restaurants } from '../model/ResturantsList';
 
-
+//? A horinontal scroll view which can display restaurants 
+//? as a elevated card.
 const HorizontalScrollView = (props) => {
 
     const [restaurants, setItems] = useState(Restaurants);
@@ -19,6 +20,10 @@ const HorizontalScrollView = (props) => {
                 horizontal
                 showsHorizontalScrollIndicator={false}>
                 {
+                    //! if any data from the given list (list)
+                    //! cross matches with data from the restaurant 
+                    //! then pass the data to ElongatedCard (component) and return it.
+
                     restaurants.map((i) => {
                         if (props.list.includes(i.id)) {
                             return (

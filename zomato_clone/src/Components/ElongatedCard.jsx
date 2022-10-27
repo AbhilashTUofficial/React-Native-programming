@@ -2,39 +2,39 @@ import { useNavigation } from '@react-navigation/native';
 import React, { useState } from 'react';
 import { Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import { secondary } from '../constants';
+import RattingTag from './RattingTag';
 
+//? Icons
 const favIcon = require('../assets/icons/heart_active.png');
 const notFavIcon = require('../assets/icons/heart_inactive.png');
 const clockIcon = require('../assets/icons/clockicon.png');
 const rupeeIcon = require('../assets/icons/rupeeicon.png');
 
-const rattingColors = [
-    "white",
-    "red",
-    "tomato",
-    "gold",
-    "#24963F",
-    "#24963F",
-];
-
-const rattingIcon = require('../assets/icons/star.png');
-
 const ElongatedCard = (props) => {
 
+    //! Data
     const navigation = useNavigation();
-    var ratting = props.restaurant.ratting.substring(0, 1);
     const [faved, setFav] = useState(false);
-
+    const img = props.restaurant.img;
+    const resName = props.restaurant.storeName;
+    const ratting = props.restaurant.ratting;
+    const travelTime = props.restaurant.travelTime;
+    const distance = props.restaurant.distance;
+    const cost = props.restaurant.cost;
+    const items = props.restaurant.items;
 
     return (
 
         <TouchableOpacity activeOpacity={0.8} style={ElongatedCardStyles.card}
             onPress={() => navigation.navigate("restaurantscreen", props.restaurant)}>
 
+            {/*//? Header part of the componet */}
+
             <View style={ElongatedCardStyles.header}>
 
-                <Image source={props.restaurant.img} style={ElongatedCardStyles.img} />
+                <Image source={img} style={ElongatedCardStyles.img} />
 
+                {/*//! display favIcon if faved is true else display notFavIcon  */}
                 <TouchableOpacity activeOpacity={0.6} style={ElongatedCardStyles.favBtn}
                     onPress={() => { setFav(!faved); }} >
 
@@ -44,29 +44,20 @@ const ElongatedCard = (props) => {
 
             </View>
 
+            {/* //? body part of the component */}
+
             <View style={ElongatedCardStyles.body}>
 
                 <View style={ElongatedCardStyles.titleCont}>
 
                     <Text style={ElongatedCardStyles.titleText}>
-                        {props.restaurant.storeName}</Text>
+                        {resName}</Text>
 
-                    <View style={[ElongatedCardStyles.ratting,
-                    { backgroundColor: rattingColors[ratting] }]} >
-
-                        <View style={ElongatedCardStyles.rattingTag}>
-
-                            <Text style={ElongatedCardStyles.rattingText}>
-                                {props.restaurant.ratting}</Text>
-
-                            <Image source={rattingIcon}
-                                style={ElongatedCardStyles.rattingIcon} />
-
-                        </View>
-
-                    </View>
+                    <RattingTag ratting={ratting} />
 
                 </View>
+
+                {/* //? Details part of the component */}
 
                 <View style={ElongatedCardStyles.resDetails}>
 
@@ -75,10 +66,10 @@ const ElongatedCard = (props) => {
                         <Image style={ElongatedCardStyles.smIcon} source={clockIcon} />
 
                         <Text style={ElongatedCardStyles.resText}>
-                            {props.restaurant.travelTime} </Text>
+                            {travelTime} </Text>
 
                         <Text style={ElongatedCardStyles.resText}>
-                            . {props.restaurant.distance}</Text>
+                            . {distance}</Text>
 
                     </View>
 
@@ -87,12 +78,12 @@ const ElongatedCard = (props) => {
                         <Image style={ElongatedCardStyles.smIcon} source={rupeeIcon} />
 
                         <Text style={ElongatedCardStyles.resText}>
-                            {props.restaurant.cost}</Text>
+                            {cost}</Text>
 
                     </View>
 
                     <Text style={ElongatedCardStyles.resText}>
-                        {props.restaurant.items}</Text>
+                        {items}</Text>
 
                 </View>
 
@@ -103,6 +94,8 @@ const ElongatedCard = (props) => {
 };
 
 export default ElongatedCard;
+
+//? Styles
 
 const ElongatedCardStyles = StyleSheet.create({
     card: {
@@ -170,28 +163,6 @@ const ElongatedCardStyles = StyleSheet.create({
         color: secondary,
         fontWeight: "500",
         marginVertical: 2,
-    },
-    ratting: {
-        height: 16,
-        width: 34,
-        borderRadius: 4,
-        alignItems: "center"
-    },
-    rattingText: {
-        fontSize: 12,
-        fontWeight: "bold",
-        color: "white",
-    },
-    rattingTag: {
-        flexDirection: 'row',
-        alignItems: "center",
-        justifyContent: "space-evenly",
-        width: "100%"
-    },
-    rattingIcon: {
-        width: 10,
-        height: 10,
-        alignSelf: "center",
     },
     resDetails: {
         marginVertical: 2,

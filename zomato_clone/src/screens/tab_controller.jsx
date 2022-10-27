@@ -1,22 +1,34 @@
 import { ImageBackground, StatusBar, View } from "react-native";
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import { darkGrey, lightGrey, primary, secondary } from "../constants";
+import { darkGrey, secondary } from "../constants";
 import MoneyScreen from "./money_screen";
 import ZomalandScreen from "./zomaland_screen";
 import HistoryScreen from "./history_screen";
 import DeliveryScreen from "./DeliveryScreen/delivery_screen";
 
-
-
-const Tab = createBottomTabNavigator();
-
-const delivery = "Delivery";
-const money = "Money";
-const zomaland = "Zomaland";
-const history = "History";
+//! Tab navigations
 
 
 function TabController() {
+    const Tab = createBottomTabNavigator();
+
+    //? Tabs
+    const delivery = "Delivery";
+    const money = "Money";
+    const zomaland = "Zomaland";
+    const history = "History";
+
+    //? Icons
+    const deliveryActive = require('../assets/icons/delivery_active.png');
+    const deliveryInActive = require('../assets/icons/delivery_inactive.png');
+    const moneyActive = require('../assets/icons/money_active.png');
+    const moneyInActive = require('../assets/icons/money_inactive.png');
+    const zomalandActive = require('../assets/icons/zomaland_active.png');
+    const zomalandInActive = require('../assets/icons/zomaland_inactive.png');
+    const historyActive = require('../assets/icons/history_active.png');
+    const historyInActive = require('../assets/icons/history_inactive.png');
+
+
     return (
         <>
             <StatusBar
@@ -42,31 +54,31 @@ function TabController() {
                         fontWeight: "500"
                     },
                     tabBarIcon: ({ focused }) => {
-                        let icon = '../assets/icons/google_logo.png';
+
                         let current = route.name;
 
                         if (current === delivery) {
                             if (focused) {
-                                return <TabIcon source={require('../assets/icons/delivery_active.png')} />;
+                                return <TabIcon source={deliveryActive} />;
                             }
-                            return <TabIcon source={require('../assets/icons/delivery_inactive.png')} />;
+                            return <TabIcon source={deliveryInActive} />;
                         } else if (current === money) {
                             if (focused) {
-                                return <TabIcon source={require('../assets/icons/money_active.png')} />;
+                                return <TabIcon source={moneyActive} />;
                             }
-                            return <TabIcon source={require('../assets/icons/money_inactive.png')} />;
+                            return <TabIcon source={moneyInActive} />;
                         }
                         else if (current === zomaland) {
                             if (focused) {
-                                return <TabIcon source={require('../assets/icons/zomaland_active.png')} />;
+                                return <TabIcon source={zomalandActive} />;
                             }
-                            return <TabIcon source={require('../assets/icons/zomaland_inactive.png')} />;
+                            return <TabIcon source={zomalandInActive} />;
                         }
                         else if (current === history) {
                             if (focused) {
-                                return <TabIcon source={require('../assets/icons/history_active.png')} />;
+                                return <TabIcon source={historyActive} />;
                             }
-                            return <TabIcon source={require('../assets/icons/history_inactive.png')} />;
+                            return <TabIcon source={historyInActive} />;
                         }
                     },
                 })}>

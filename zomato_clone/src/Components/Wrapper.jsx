@@ -1,7 +1,9 @@
 import { View } from 'react-native';
 import React from 'react';
 
-const Background = ({ children }) => {
+//? Wrapper wraps all componets on a singular componet.
+
+const Wrapper = ({ children }) => {
     return (
         <View>
             <View
@@ -19,4 +21,4 @@ const Background = ({ children }) => {
     );
 };
 
-export default Background;
+export default Wrapper;

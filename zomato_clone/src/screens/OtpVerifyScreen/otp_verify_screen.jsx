@@ -1,14 +1,19 @@
 import { Image, Text, TextInput, TouchableOpacity, View } from 'react-native';
 import React from 'react';
-import Background from '../../Components/Background';
+import Wrapper from '../../Components/Wrapper';
 import { commonStyles } from '../common_styles';
 import { otpStyles, prevIcon } from './otp_verify_styles';
 
 const OTPVerifyScreen = (props) => {
+
     i = 0;
+
+    //? Initial value of the otp componet, (empty string)
     otp = ["", "", "", "", "", ""];
+
     return (
-        <Background>
+
+        <Wrapper>
 
             <View style={[commonStyles.container, { paddingVertical: 100, alignItems: "center" }]}>
 
@@ -25,6 +30,8 @@ const OTPVerifyScreen = (props) => {
                 <View style={otpStyles.container}>
 
                     {
+                        //! Loop through all the values on otp array
+                        //! and return slots accordingly
                         otp.map((n) => {
                             i++;
                             return (
@@ -46,6 +53,8 @@ const OTPVerifyScreen = (props) => {
 
                 </View>
 
+                {/* Action buutons */}
+
                 <View style={otpStyles.aligncenter}>
 
                     <CustomBtn label={"Resend SMS"} />
@@ -64,7 +73,7 @@ const OTPVerifyScreen = (props) => {
                 source={prevIcon}
                 onPress={() => props.navigation.goBack()} />
 
-        </Background>
+        </Wrapper>
     );
 };
 

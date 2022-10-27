@@ -2,9 +2,11 @@ import { Dimensions, Image, StyleSheet, Text, TouchableOpacity, View } from 'rea
 import React from 'react';
 import { lightGrey, secondary } from '../constants';
 
+//? Icons
 const locationIcon = require('../assets/icons/location.png');
 const dropdownIcon = require('../assets/icons/dropdown2.png');
 const languageIcon = require('../assets/icons/language.png');
+const profileIcon = require('../assets/icons/profile.png');
 
 const Header = () => {
     return (
@@ -32,7 +34,7 @@ const Header = () => {
 
                 <TouchableOpacity style={HeaderStyles.profileBtn}>
 
-                    <Image source={require('../assets/icons/profile.png')}
+                    <Image source={profileIcon}
                         style={HeaderStyles.profileIcon} />
 
                 </TouchableOpacity>
@@ -43,7 +45,11 @@ const Header = () => {
     );
 };
 
-export const HeaderStyles = StyleSheet.create({
+export default Header;
+
+
+//? Styles
+const HeaderStyles = StyleSheet.create({
     container: {
         height: 46,
         width: Dimensions.get("screen").width,
@@ -108,5 +114,3 @@ export const HeaderStyles = StyleSheet.create({
     },
 
 });
-
-export default Header;
