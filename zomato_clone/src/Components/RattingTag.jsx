@@ -1,4 +1,5 @@
 import { Image, StyleSheet, Text, View } from "react-native";
+import { lightGrey } from "../constants";
 
 
 
@@ -25,20 +26,48 @@ const RattingTag = (props) => {
 
 
     return (
-        <View style={[RattingTagStyles.ratting,
-        { backgroundColor: rattingColors[rate] }]} >
+        props.type === "sm" ?
+            <View style={[RattingTagStyles.smCont,
+            { backgroundColor: rattingColors[rate] }]} >
 
-            <View style={RattingTagStyles.rattingTag}>
+                <View style={RattingTagStyles.smTag}>
 
-                <Text style={RattingTagStyles.rattingText}>
-                    {ratting}</Text>
+                    <Text style={RattingTagStyles.smText}>
+                        {ratting}</Text>
 
-                <Image source={rattingIcon}
-                    style={RattingTagStyles.rattingIcon} />
+                    <Image source={rattingIcon}
+                        style={RattingTagStyles.smIcon} />
+
+                </View>
+
+            </View> :
+            <View style={RattingTagStyles.mdCont}>
+
+                <View style={{ flex: 1, backgroundColor: rattingColors[rate] }}>
+
+                    <View style={RattingTagStyles.mdRattCont}>
+
+                        <Text style={RattingTagStyles.mdText}>{ratting} </Text>
+
+                        <Image source={rattingIcon} style={RattingTagStyles.mdIcon} />
+
+                    </View>
+
+                </View>
+
+                <View style={{ flex: 1, backgroundColor: "white" }}>
+
+                    <View style={RattingTagStyles.mdRevCont}>
+
+                        <Text style={RattingTagStyles.mdRevNo}>52</Text>
+                        <Text style={{ fontSize: 10, fontWeight: "bold" }}>
+                            Reviews</Text>
+
+                    </View>
+
+                </View>
 
             </View>
-
-        </View>
     );
 };
 
@@ -47,26 +76,61 @@ export default RattingTag;
 //? Styles
 
 const RattingTagStyles = StyleSheet.create({
-    ratting: {
+    smCont: {
         height: 16,
         width: 34,
         borderRadius: 4,
         alignItems: "center"
     },
-    rattingText: {
+    smText: {
         fontSize: 12,
         fontWeight: "bold",
         color: "white",
     },
-    rattingTag: {
+    smTag: {
         flexDirection: 'row',
         alignItems: "center",
         justifyContent: "space-evenly",
         width: "100%"
     },
-    rattingIcon: {
+    smIcon: {
         width: 10,
         height: 10,
         alignSelf: "center",
     },
+
+    mdCont: {
+        width: 60,
+        height: 60,
+        borderRadius: 12,
+        borderColor: lightGrey,
+        borderWidth: 1,
+        overflow: 'hidden'
+    },
+    mdRattCont: {
+        alignItems: "center",
+        justifyContent: "center",
+        height: "100%",
+        flexDirection: 'row'
+    },
+    mdText: {
+        color: "white",
+        fontSize: 16,
+        fontWeight: "bold"
+    },
+    mdIcon: {
+        width: 14,
+        height: 14,
+        alignSelf: "center",
+    },
+    mdRevCont: {
+        alignItems: "center",
+        justifyContent: "center",
+        height: "100%",
+    },
+    mdRevNo: {
+        fontSize: 12,
+        fontWeight: "bold"
+    },
+
 });

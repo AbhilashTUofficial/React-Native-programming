@@ -1,4 +1,4 @@
-import { Image, ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import { Image, ScrollView, StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native';
 import React from 'react';
 import { lightGrey, secondary } from '../constants';
 
@@ -29,8 +29,10 @@ const SearchBar = () => {
                 <Image source={searchIcon}
                     style={SearchBarStyles.searchIcon} />
 
-                <Text style={{ marginHorizontal: 8, }}>
-                    Restaurant name or a dish name</Text>
+
+                <TextInput style={{ marginHorizontal: 8, }}
+                    placeholder={"Restaurant name or a dish name"}>
+                </TextInput>
 
             </View >
 

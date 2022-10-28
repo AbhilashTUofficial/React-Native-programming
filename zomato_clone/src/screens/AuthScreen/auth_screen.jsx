@@ -107,10 +107,7 @@ const PhInputField = () => {
                 <Text style={authStyles.ccText}>+91</Text>
 
                 <TextInput placeholder='Enter phone Number' placeholderTextColor={grey}
-
-                    style={authStyles.phInput} >
-
-                </TextInput >
+                    style={authStyles.phInput} />
 
             </View>
 

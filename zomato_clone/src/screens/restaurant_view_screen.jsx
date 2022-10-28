@@ -1,22 +1,20 @@
-import { Animated, Dimensions, Image, RefreshControl, ScrollView, StatusBar, Text, TouchableHighlightBase, TouchableOpacity, View } from 'react-native';
-import React, { useEffect, useState } from 'react';
+import { Dimensions, ScrollView, StatusBar, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import React from 'react';
 import Wrapper from '../Components/Wrapper';
-import { darkGrey, lightGrey, primary, secondary } from '../constants';
+import { primary } from '../constants';
 import RestaurantDetails from '../Components/RestaurantDetails';
 import Header from '../Components/RestaurantHeader';
 import VegNonVeg from '../Components/VegNonVegTag';
 import CatergoryExpandable from '../Components/CategoryExpandable';
 import { useRoute } from '@react-navigation/native';
 
+//? Restaurant Screen
+
 function RestaurantViewScreen({ navigation }) {
+
     const route = useRoute();
-    components = [
 
-    ];
-
-    state = {
-        headerColor: "white"
-    };
+    //! Localizing data
 
     const resturantDetails = {
         id: route.params.id,
@@ -25,36 +23,32 @@ function RestaurantViewScreen({ navigation }) {
         travelTime: route.params.travelTime,
         ratting: route.params.ratting,
         location: route.params.location,
+        distance: route.params.distance,
     };
+
     const categories = route.params.categories;
+    const restaurantName = route.params.storeName;
 
     return (
-        <Wrapper>
+        <Wrapper >
             <StatusBar translucent backgroundColor="transparent" />
 
-            <View style={{
-                width: Dimensions.get("window").width,
-                height: Dimensions.get("window").height,
-                alignItems: "center",
-                flexDirection: 'row'
-            }}>
-                <View
-                    style={{
-                        width: "100%"
-                    }}>
-                    <ScrollView
-                        stickyHeaderIndices={[0]}
-                        showsVerticalScrollIndicator={false}>
+            <View style={RestViewScrStyle.cont}>
 
-                        <Header goBackHandler={() => navigation.goBack()} />
-                        <RestaurantDetails restaurant={resturantDetails} />
-                        <VegNonVeg />
-                        <CatergoryExpandable categories={categories} />
-                        <HealthGuide />
+                <ScrollView stickyHeaderIndices={[0]}
+                    showsVerticalScrollIndicator={false}>
 
-                    </ScrollView>
+                    <Header goBackHandler={() => navigation.goBack()} name={restaurantName} />
 
-                </View>
+                    <RestaurantDetails restaurant={resturantDetails} />
+
+                    <VegNonVeg />
+
+                    <CatergoryExpandable categories={categories} />
+
+                    <HealthGuide />
+
+                </ScrollView>
 
             </View>
 
@@ -66,74 +60,62 @@ export default RestaurantViewScreen;
 
 
 const HealthGuide = () => {
+
+    const contents = [
+        "Menu items, nutritional information and prices are set directly by the restaurant.",
+        "Nutritional information values displayed are indicative, per serving and may vary depending on the ingreding on the ingredients, portion size and customizations.",
+        "An average active adult requires 2,00 kcal energy per day, however, calorie needs may vary."
+    ];
+
     return (
-        <View
-            style={{
-                flex: 1,
-                backgroundColor: "#F6F5FA",
-                height: 400,
-            }}>
-            <View
-                style={{
-                    flexDirection: 'row',
-                    alignItems: "center",
-                    paddingHorizontal: 12,
-                    marginTop: 24
-                }}>
-                <Text style={{
-                    fontSize: 28
-                }}>• </Text>
-                <Text
-                    style={{
-                        fontSize: 12,
-                    }}>Menu items, nutritional information and prices are set directly by the restaurant.</Text>
-            </View>
+        <View style={RestViewScrStyle.hgCont}>
 
-            <View
-                style={{
-                    flexDirection: 'row',
-                    alignItems: "center",
-                    paddingHorizontal: 12,
-                    marginTop: 24
+            {
+                contents.map((text) => {
+                    return (
+                        <View
+                            style={RestViewScrStyle.row}>
 
-                }}>
-                <Text style={{
-                    fontSize: 28
-                }}>• </Text>
-                <Text
-                    style={{
-                        fontSize: 12,
-                    }}>Nutritional information values displayed are indicative, per serving and may vary depending on the ingreding on the ingredients, portion size and customizations.</Text>
-            </View>
+                            <Text style={{ fontSize: 28 }}>• </Text>
 
-            <View
-                style={{
-                    flexDirection: 'row',
-                    alignItems: "center",
-                    paddingHorizontal: 12,
-                    marginTop: 24
+                            <Text style={{ fontSize: 12 }}>{text}</Text>
 
-                }}>
-                <Text style={{
-                    fontSize: 28
-                }}>• </Text>
-                <Text
-                    style={{
-                        fontSize: 12,
-                    }}>An average active adult requires 2,00 kcal energy per day, however, calorie needs may vary.</Text>
-            </View>
-            <View>
-                <TouchableOpacity>
-                    <Text
-                        style={{
-                            fontSize: 12,
-                            color: primary,
-                            paddingHorizontal: 12,
-                            marginTop: 24
-                        }}>Report an issue with the menu</Text>
-                </TouchableOpacity>
-            </View>
+                        </View>
+                    );
+                })
+            }
+
+            <TouchableOpacity>
+                <Text style={RestViewScrStyle.link}>Report an issue with the menu</Text>
+            </TouchableOpacity>
+
         </View>
     );
 };
 
+const RestViewScrStyle = StyleSheet.create({
+    cont: {
+        width: Dimensions.get("window").width,
+        height: Dimensions.get("window").height,
+        alignItems: "center",
+        flexDirection: 'row',
+        backgroundColor: "#F6F5FA",
+    },
+    hgCont: {
+        flex: 1,
+        backgroundColor: "#F6F5FA",
+        height: 400,
+    },
+    link: {
+        fontSize: 12,
+        color: primary,
+        paddingHorizontal: 12,
+        marginTop: 24
+    },
+    row: {
+        flexDirection: 'row',
+        alignItems: "center",
+        paddingHorizontal: 12,
+        marginTop: 24
+    },
+});

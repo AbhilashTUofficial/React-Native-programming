@@ -1,8 +1,8 @@
 import { lightGrey, secondary } from '../constants';
-import { View, Image, Text, TouchableOpacity } from 'react-native';
+import { View, Image, Text, TouchableOpacity, TextInput } from 'react-native';
 
 
-const Header = ({ goBackHandler }) => {
+const Header = ({ goBackHandler, name }) => {
     return (
         <View
             style={{
@@ -44,8 +44,7 @@ const Header = ({ goBackHandler }) => {
                         fontWeight: "bold",
                         color: secondary,
                         letterSpacing: 1,
-                    }}
-                >Restaurant</Text>
+                    }}>{name}</Text>
 
             </View>
 
@@ -53,12 +52,13 @@ const Header = ({ goBackHandler }) => {
                 style={{
                     flexDirection: "row",
                     alignItems: "center",
+                    justifyContent: "center",
                     borderWidth: 0.4,
                     borderColor: lightGrey,
                     borderRadius: 30,
                     height: 36,
                     width: 140,
-                    paddingHorizontal: 4
+
                 }}>
                 <View
                     style={{
@@ -76,10 +76,7 @@ const Header = ({ goBackHandler }) => {
                             alignSelf: "center",
                         }} />
                 </View>
-                <Text
-                    style={{
-                        marginHorizontal: 2,
-                    }}>Search menu</Text>
+                <TextInput placeholder='Search menu' />
             </View >
             <TouchableOpacity
 
@@ -107,7 +104,6 @@ const Header = ({ goBackHandler }) => {
                     }} />
 
             </TouchableOpacity>
-
 
         </View>
     );

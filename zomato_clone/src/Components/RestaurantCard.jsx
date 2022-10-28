@@ -57,7 +57,7 @@ const RestaurantCard = (props) => {
                     <Text style={RestaurantCardStyles.titleText}>
                         {storeName}</Text>
 
-                    <RattingTag ratting={ratting} />
+                    <RattingTag ratting={ratting} type={"sm"} />
 
                 </View>
                 <View

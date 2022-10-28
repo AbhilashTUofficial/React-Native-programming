@@ -1,80 +1,64 @@
-import { Dimensions, Image, ScrollView, Text, View } from 'react-native';
-import { darkGrey, lightGrey, secondary } from '../constants';
+import { Dimensions, Image, ScrollView, StyleSheet, Text, View } from 'react-native';
+import { blue, darkGrey, secondary } from '../constants';
+import RattingTag from './RattingTag';
 
 
 const RestaurantDetails = (props) => {
+
+    //? Data
+    const resName = props.restaurant.storeName;
+    const backgroundImg = require('../assets/img/fireworks.jpg');
+    const clockIcon = require('../assets/icons/clockicon.png');
+    const items = props.restaurant.foodTypes;
+    const location = props.restaurant.location;
+    const ratting = props.restaurant.ratting;
+    const travelTime = props.restaurant.travelTime;
+    const distance = props.restaurant.distance;
+
     return (
-        <View
-            style={{
-                flex: 1,
-                width: Dimensions.get('window').width,
-                height: 226,
-                alignItems: "center",
-                backgroundColor: "#F6F5FA",
-                paddingBottom: 6,
-            }}>
-            <Image source={require('../assets/img/fireworks.jpg')}
-                style={{
-                    height: '100%',
-                    width: "100%",
-                    alignSelf: "center",
-                    borderBottomLeftRadius: 30,
-                    borderBottomRightRadius: 30,
-                }} />
-            <View
-                style={{
-                    marginTop: 18,
-                    height: 190,
-                    width: "94%",
-                    backgroundColor: "white",
-                    position: "absolute",
-                    borderRadius: 16,
-                    paddingHorizontal: 16,
-                    paddingVertical: 8,
-                    justifyContent: "space-evenly"
 
-                }}>
-                <View
-                    style={{
-                        flexDirection: "row",
-                        justifyContent: "space-between"
-                    }}>
+        <View style={RestaurantDetailsStyle.cont}>
+
+            {/* 
+            //? Diwali special background image.
+            // <Image source={backgroundImg} style={RestaurantDetailsStyle.img} /> 
+            */}
+
+            <View style={RestaurantDetailsStyle.resCont}>
+
+                <View style={{ flexDirection: "row", justifyContent: "space-between" }}>
+
                     <View>
-                        <Text style={{
-                            fontSize: 24,
-                            fontWeight: "500",
-                            color: secondary
-                        }}>{props.restaurant.storeName}</Text>
-                        <Text style={{
-                            fontSize: 12,
-                            fontWeight: "500",
-                            color: secondary
-                        }}>{props.restaurant.foodTypes}</Text>
-                        <Text style={{
-                            fontSize: 12,
-                            fontWeight: "500",
-                            color: darkGrey
-                        }}>{props.restaurant.location}</Text>
 
+                        <Text style={RestaurantDetailsStyle.resTitle}>{resName}</Text>
 
+                        <Text style={RestaurantDetailsStyle.resText}>{items}</Text>
+
+                        <Text style={[RestaurantDetailsStyle.resText,
+                        { color: darkGrey }]}>{location}</Text>
 
                     </View>
 
-                    <Ratting />
+                    <RattingTag type={"md"} ratting={ratting} />
 
                 </View>
-                <View>
-                    <ScrollView
-                        horizontal
-                        showsHorizontalScrollIndicator={false}>
-                        <Text style={{
-                            fontSize: 12,
-                            fontWeight: "500",
-                            letterSpacing: 1,
-                        }}>30 min   |   1 km away   |   Flat $14 delivery charge on order above $99</Text>
 
-                    </ScrollView>
-                </View>
+                <ScrollView horizontal showsHorizontalScrollIndicator={false}
+                    style={RestaurantDetailsStyle.resDetails}>
+
+                    <Image style={RestaurantDetailsStyle.smIcon} source={clockIcon} />
+
+                    <Text style={RestaurantDetailsStyle.resText}>
+                        {travelTime} | </Text>
+
+                    <Text style={RestaurantDetailsStyle.resText}>
+                        {distance} away | </Text>
+
+                    <Text style={[RestaurantDetailsStyle.resText, { color: blue }]}>
+                        Flat ₹14 delivery charge on orders above ₹99 </Text>
+
+                </ScrollView>
+
                 <CouponsScrollView />
 
             </View>
@@ -84,105 +68,83 @@ const RestaurantDetails = (props) => {
 
 export default RestaurantDetails;
 
-const Ratting = () => {
-    return (
-        <View
-            style={{
-                width: 60,
-                height: 60,
-                borderRadius: 12,
-                borderColor: lightGrey,
-                borderWidth: 1,
-                overflow: 'hidden'
-            }}>
-            <View
-                style={{
-                    flex: 1,
-                    backgroundColor: "gold",
-                }}>
-                <View
-                    style={{
-                        alignItems: "center",
-                        justifyContent: "center",
-                        height: "100%",
-                        flexDirection: 'row'
-                    }}>
-                    <Text
-                        style={{
-                            color: "white",
-                            fontSize: 16,
-                            fontWeight: "bold"
-                        }}>3.0 </Text>
-
-                    <View
-                        style={{
-                            width: 14,
-                            height: 14
-                        }}>
-                        <Image
-                            source={require('../assets/icons/star.png')}
-                            style={{
-                                height: '100%',
-                                width: "100%",
-                                alignSelf: "center",
-                            }} />
-                    </View>
-
-                </View>
-            </View>
-            <View
-                style={{
-                    flex: 1,
-                    backgroundColor: "white"
-                }}>
-                <View
-                    style={{
-                        alignItems: "center",
-                        justifyContent: "center",
-                        height: "100%",
-                    }}>
-                    <Text
-                        style={{
-                            fontSize: 12,
-                            fontWeight: "bold"
-                        }}>52</Text>
-                    <Text
-                        style={{
-                            fontSize: 10,
-                            fontWeight: "bold"
-                        }}>Reviews</Text>
-
-                </View>
-            </View>
-        </View>
-    );
-};
 
 const CouponsScrollView = () => {
+
+    const couponImg = require("../assets/img/coupon.png");
+
     return (
         <ScrollView
             horizontal
-            showsHorizontalScrollIndicator={false}
-            style={{
-                marginVertical: 16
-            }}>
-            <Coupon />
-            <Coupon />
-            <Coupon />
-            <Coupon />
+            showsHorizontalScrollIndicator={false}>
+
+            <Coupon source={couponImg} />
+
+            <Coupon source={couponImg} />
+
+            <Coupon source={couponImg} />
+
         </ScrollView>
     );
 };
 
-const Coupon = () => {
-    return (
-        <View
-            style={{
-                height: 60,
-                width: 160,
-                marginRight: 16,
-                backgroundColor: "lightblue"
-            }}
-        ></View>
-    );
+const Coupon = (props) => {
+
+    return (<Image style={RestaurantDetailsStyle.coupon}{...props} />);
+
 };
+
+const RestaurantDetailsStyle = StyleSheet.create({
+    cont: {
+        width: Dimensions.get('window').width,
+        height: 210,
+        alignItems: "center",
+        backgroundColor: "#F6F5FA",
+        // paddingBottom: 6,
+    },
+    img: {
+        height: '100%',
+        width: "100%",
+        alignSelf: "center",
+        borderBottomLeftRadius: 30,
+        borderBottomRightRadius: 30,
+    },
+    resCont: {
+        marginTop: 18,
+        height: 180,
+        marginHorizontal: 12,
+        backgroundColor: "white",
+        position: "absolute",
+        borderRadius: 16,
+        paddingHorizontal: 16,
+        paddingTop: 8,
+        justifyContent: "space-evenly",
+        elevation: 0.2,
+
+    },
+    resTitle: {
+        fontSize: 16,
+        fontWeight: "500",
+        color: secondary
+    },
+    resText: {
+        fontSize: 12,
+        fontWeight: "500",
+        color: secondary,
+        marginVertical: 2,
+    },
+    resDetails: {
+        marginTop: 2,
+        flexDirection: 'row',
+    },
+    smIcon: {
+        width: 16,
+        height: 16,
+        marginRight: 4,
+    },
+    coupon: {
+        height: 60,
+        width: 210,
+        marginRight: 16,
+    },
+});

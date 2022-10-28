@@ -15,7 +15,7 @@ export const Restaurants = [
         items: "Fast Food, Burger, Biryani",
         location: "Sulthan Bathery Locality, Sulthan Bathery",
         travelTime: "40 min",
-        distance: "2km",
+        distance: "2 km",
         cost: "150 for one",
         ratting: "4.6",
         categories: [
@@ -23,9 +23,21 @@ export const Restaurants = [
                 title: "Recommended",
                 items: [{
                     itemTitle: "Chicken Burger Combo",
+                    bestseller: true,
+                    itemImg: require('../assets/food_items/biryani_item.png'),
+                    veg: false,
+                    itemPrice: "₹ 250",
+                    itemDescription: "Combo of crispy Veg Patty & a bowl of hot & delicious Maggi[serves 1]",
+
                 },
                 {
-                    itemTitle: "Chicken Cheese Burger",
+                    itemTitle: "Vegitable Burger",
+                    bestseller: true,
+                    itemImg: require('../assets/food_items/biryani_item.png'),
+                    veg: true,
+                    itemPrice: "₹ 250",
+                    itemDescription: "Combo of crispy Veg Patty & a bowl of hot & delicious Maggi[serves 1]",
+
                 }
                 ]
             },
@@ -33,6 +45,12 @@ export const Restaurants = [
                 title: "Special",
                 items: [{
                     itemTitle: "Chicken Burger Combo",
+                    bestseller: false,
+                    itemImg: require('../assets/food_items/biryani_item.png'),
+                    veg: false,
+                    itemPrice: "₹ 250",
+                    itemDescription: "Combo of crispy Veg Patty & a bowl of hot & delicious Maggi[serves 1]",
+
 
                 }]
             }
@@ -47,7 +65,7 @@ export const Restaurants = [
         items: "South Indian",
         location: "Sulthan Bathery Locality, Sulthan Bathery",
         travelTime: "40 min",
-        distance: "2km",
+        distance: "2 km",
         cost: "150 for one",
         ratting: "3.8",
         categories: [],
@@ -59,7 +77,7 @@ export const Restaurants = [
         items: "Fast Food, Burger, Biryani",
         location: "Sulthan Bathery Locality, Sulthan Bathery",
         travelTime: "40 min",
-        distance: "2km",
+        distance: "2 km",
         cost: "150 for one",
         ratting: "4.0",
         categories: [],
@@ -71,7 +89,7 @@ export const Restaurants = [
         items: "South Indian",
         location: "Sulthan Bathery Locality, Sulthan Bathery",
         travelTime: "40 min",
-        distance: "2km",
+        distance: "2 km",
         cost: "150 for one",
         ratting: "4.2",
         categories: [],
@@ -83,7 +101,7 @@ export const Restaurants = [
         items: "Fast Food, Burger, Biryani",
         location: "Sulthan Bathery Locality, Sulthan Bathery",
         travelTime: "40 min",
-        distance: "2km",
+        distance: "2 km",
         cost: "150 for one",
         ratting: "2.6",
         categories: [],

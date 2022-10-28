@@ -53,7 +53,7 @@ const ElongatedCard = (props) => {
                     <Text style={ElongatedCardStyles.titleText}>
                         {resName}</Text>
 
-                    <RattingTag ratting={ratting} />
+                    <RattingTag ratting={ratting} type={"sm"} />
 
                 </View>
 
