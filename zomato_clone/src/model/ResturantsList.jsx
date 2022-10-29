@@ -62,13 +62,71 @@ export const Restaurants = [
         id: 2,
         storeName: "KFC",
         img: require('../assets/food_items/burger_item.png'),
-        items: "South Indian",
+        items: "Burger, Pizza, French fries",
         location: "Sulthan Bathery Locality, Sulthan Bathery",
         travelTime: "40 min",
         distance: "2 km",
         cost: "150 for one",
         ratting: "3.8",
-        categories: [],
+        categories: [
+            {
+                title: "Recommended",
+                items: [{
+                    itemTitle: "Chicken Burger Combo",
+                    bestseller: true,
+                    itemImg: require('../assets/food_items/burger_item.png'),
+                    veg: false,
+                    itemPrice: "₹ 250",
+                    itemDescription: "Combo of crispy Veg Patty & a bowl of hot & delicious Maggi[serves 1]",
+
+                },
+                {
+                    itemTitle: "Vegitable Pizza",
+                    bestseller: true,
+                    itemImg: require('../assets/food_items/soup_item.png'),
+                    veg: true,
+                    itemPrice: "₹ 250",
+                    itemDescription: "Combo of crispy Veg Patty & a bowl of hot & delicious Maggi[serves 1]",
+
+                },
+                {
+                    itemTitle: "Chicken Burger Combo",
+                    bestseller: true,
+                    itemImg: require('../assets/food_items/biryani_item.png'),
+                    veg: false,
+                    itemPrice: "₹ 250",
+                    itemDescription: "Combo of crispy Veg Patty & a bowl of hot & delicious Maggi[serves 1]",
+
+                }
+                ]
+            },
+            {
+                title: "Special",
+                items: [{
+                    itemTitle: "Chicken Burger Combo",
+                    bestseller: false,
+                    itemImg: require('../assets/food_items/biryani_item.png'),
+                    veg: false,
+                    itemPrice: "₹ 250",
+                    itemDescription: "Combo of crispy Veg Patty & a bowl of hot & delicious Maggi[serves 1]",
+
+
+                }]
+            },
+            {
+                title: "Winter Special",
+                items: [{
+                    itemTitle: "Chicken Burger Combo",
+                    bestseller: false,
+                    itemImg: require('../assets/food_items/biryani_item.png'),
+                    veg: false,
+                    itemPrice: "₹ 250",
+                    itemDescription: "Combo of crispy Veg Patty & a bowl of hot & delicious Maggi[serves 1]",
+
+
+                }]
+            }
+        ],
     },
     {
         id: 3,

@@ -15,7 +15,7 @@ const CatergoryExpandable = (props) => {
             {
                 props.categories.map((category) => {
                     return (
-                        <ItemView catagory={category} />
+                        <ItemView category={category} />
                     );
                 })
             }
@@ -28,8 +28,8 @@ export default CatergoryExpandable;
 const ItemView = (props) => {
 
     const [isExpanded, setIsExpanded] = useState(false);
-    const title = props.catagory.title;
-    const itemNo = props.catagory.items.length;
+    const title = props.category.title;
+    const itemNo = props.category.items.length;
     const dropdownIcon1 = require('../assets/icons/dropdown3.png');
     const dropdownIcon2 = require('../assets/icons/dropdown3.1.png');
 
@@ -48,7 +48,7 @@ const ItemView = (props) => {
             </TouchableOpacity>
 
             <ExpandableView expanded={isExpanded}
-                items={props.catagory.items} />
+                items={props.category.items} />
         </>
     );
 };

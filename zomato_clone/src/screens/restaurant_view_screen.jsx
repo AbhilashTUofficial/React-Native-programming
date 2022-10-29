@@ -1,12 +1,13 @@
-import { Dimensions, ScrollView, StatusBar, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
-import React from 'react';
+import { Dimensions, Image, ScrollView, StatusBar, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import React, { useState } from 'react';
 import Wrapper from '../Components/Wrapper';
-import { primary } from '../constants';
+import { primary, secondary } from '../constants';
 import RestaurantDetails from '../Components/RestaurantDetails';
 import Header from '../Components/RestaurantHeader';
 import VegNonVeg from '../Components/VegNonVegTag';
 import CatergoryExpandable from '../Components/CategoryExpandable';
 import { useRoute } from '@react-navigation/native';
+import BrouseMenu from '../Components/BrouseMenu';
 
 //? Restaurant Screen
 
@@ -42,13 +43,15 @@ function RestaurantViewScreen({ navigation }) {
 
                     <RestaurantDetails restaurant={resturantDetails} />
 
-                    <VegNonVeg />
+                    {categories.length == 0 ? null : <VegNonVeg />}
 
                     <CatergoryExpandable categories={categories} />
 
                     <HealthGuide />
 
                 </ScrollView>
+
+                <BottomPops categories={categories} />
 
             </View>
 
@@ -57,6 +60,14 @@ function RestaurantViewScreen({ navigation }) {
 };
 
 export default RestaurantViewScreen;
+
+const BottomPops = (props) => {
+    return (
+        <View style={RestViewScrStyle.bottomPopCont}>
+            <BrouseMenu categories={props.categories} />
+        </View>
+    );
+};
 
 
 const HealthGuide = () => {
@@ -118,4 +129,11 @@ const RestViewScrStyle = StyleSheet.create({
         paddingHorizontal: 12,
         marginTop: 24
     },
+    bottomPopCont: {
+        bottom: 16,
+        alignItems: 'center',
+        position: "absolute",
+        width: "100%"
+    },
+
 });
