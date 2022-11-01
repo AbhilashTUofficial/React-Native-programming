@@ -40,6 +40,7 @@ This is fun.
     |-- Hello_World_App
     |-- Timer_App
     |-- Todo_App
+    |-- Redux
     |    
     |-- README.md
 
