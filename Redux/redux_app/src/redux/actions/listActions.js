@@ -1,6 +1,8 @@
-export const addItem = () => {
+export const addItem = itemName => {
+  console.log(itemName);
   return {
     type: 'add_item',
+    itemName: itemName,
   };
 };
 

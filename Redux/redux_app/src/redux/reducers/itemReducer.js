@@ -1,28 +1,25 @@
-const initialItems = ['ONE', 'TWO', 'THREE'];
+import {initialItems} from '../../model/data';
 
 export default (state = initialItems, action) => {
   switch (action.type) {
     case 'add_item':
-      return [...state, addItem(state)];
+      return addItem(state, action.itemName);
     case 'removeall_item':
       return [];
     case 'remove_item':
       return removeItem(state, action.index);
     default:
-      return state;
+      return [...state];
   }
 };
 
 //! Functions
 
-const addItem = state => {
-  return 'New';
+const addItem = (state, itemName) => {
+  return [...state, itemName];
 };
 
 const removeItem = (state, i) => {
-  if (i > -1) {
-    state.splice(i, 1);
-  }
-  console.log(state);
+  state = state.filter(item => state.indexOf(item) !== i);
   return [...state];
 };

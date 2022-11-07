@@ -1,17 +1,12 @@
 import {useState} from 'react';
 import {StyleSheet, Text, TouchableOpacity, View} from 'react-native';
-import {useDispatch, useSelector} from 'react-redux';
+import {useDispatch} from 'react-redux';
 import {addItem, removeallItem, removeItem} from '../redux/actions/listActions';
-const Home = () => {
+import Dialog from 'react-native-dialog';
+import {connect} from 'react-redux';
+
+const Home = ({items}) => {
   const dispatch = useDispatch();
-
-  //! I have no idea whats happening here
-  const items = useSelector(obj => obj.items);
-  console.log(items);
-
-  const addItemHandler = () => {
-    dispatch(addItem());
-  };
 
   const removeallItemHandler = () => {
     dispatch(removeallItem());
@@ -20,7 +15,6 @@ const Home = () => {
   const removeItemHandler = i => {
     dispatch(removeItem(i));
   };
-
   return (
     <View style={style.container}>
       <Text style={style.title}>LIST({items.length})</Text>
@@ -41,7 +35,7 @@ const Home = () => {
           );
         })}
         <View style={style.btns}>
-          <AddBtn handler={addItemHandler} />
+          <AddBtn />
           <RemoveBtn handler={removeallItemHandler} />
         </View>
       </View>
@@ -49,10 +43,29 @@ const Home = () => {
   );
 };
 
-const AddBtn = props => {
+const AddBtn = () => {
+  const [visible, setVisible] = useState(false);
+  const [itemName, setItemName] = useState('');
+  const dispatch = useDispatch();
+
+  const addItemHandler = itemName => {
+    dispatch(addItem(itemName));
+    setVisible(false);
+  };
+
+  const addItemPopUpHandler = () => {
+    setVisible(!visible);
+  };
   return (
-    <TouchableOpacity onPress={props.handler} style={style.btn}>
+    <TouchableOpacity onPress={addItemPopUpHandler} style={style.btn}>
       <Text>ADD</Text>
+      <Dialog.Container visible={visible}>
+        <Dialog.Title>Add new item</Dialog.Title>
+        <Dialog.Description>Enter the name of the item.</Dialog.Description>
+        <Dialog.Input onChangeText={text => setItemName(text)} />
+        <Dialog.Button label={'ADD'} onPress={() => addItemHandler(itemName)} />
+        <Dialog.Button label={'DISCARD'} onPress={addItemPopUpHandler} />
+      </Dialog.Container>
     </TouchableOpacity>
   );
 };
@@ -110,4 +123,8 @@ const style = StyleSheet.create({
   },
 });
 
-export default Home;
+const mapStateToProps = state => {
+  return {items: state.items};
+};
+
+export default connect(mapStateToProps)(Home);
