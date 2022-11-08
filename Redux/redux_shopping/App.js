@@ -15,6 +15,7 @@ function App() {
       <Provider store={store}>
         <NavigationContainer>
           <Stack.Navigator screenOptions={{headerShown: false}}>
+            {/* //! Dont use connect on these components directly*/}
             <Stack.Screen name="homescreen" component={HomeScreen} />
             <Stack.Screen name="cartscreen" component={CartScreen} />
             <Stack.Screen name="shopviewscreen" component={ShopViewScreen} />

@@ -1,16 +1,16 @@
 import {React} from 'react';
 import {StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 import Shops from '../Components/Shop/Shops';
+import {useNavigation} from '@react-navigation/native';
 
-const HomeScreen = props => {
+const HomeScreen = ({products}) => {
+  const navigation = useNavigation();
   return (
     <>
       <View style={style.header}>
         <Text style={style.text}>Home</Text>
         <Text style={style.text}>Shops</Text>
-
-        <TouchableOpacity
-          onPress={() => props.navigation.navigate('cartscreen')}>
+        <TouchableOpacity onPress={() => navigation.navigate('cartscreen')}>
           <Text style={style.text}>Cart(0)</Text>
         </TouchableOpacity>
       </View>
@@ -32,4 +32,5 @@ const style = StyleSheet.create({
     color: '#202020',
   },
 });
+
 export default HomeScreen;

@@ -1,13 +1,25 @@
 import {React} from 'react';
-import {Image, StyleSheet, Text, TouchableOpacity, View} from 'react-native';
+import {ScrollView, View} from 'react-native';
 import Shop from './Shop';
+import {connect} from 'react-redux';
 
-const Shops = props => {
+const Shops = ({shops}) => {
   return (
     <View>
-      <Shop />
+      <ScrollView>
+        {shops.map(shop => (
+          <Shop key={shop.id} shopData={shop} />
+        ))}
+        <View style={{height: 120}} />
+      </ScrollView>
     </View>
   );
 };
 
-export default Shops;
+const mapStateToProps = state => {
+  return {
+    shops: state.data.shops,
+  };
+};
+
+export default connect(mapStateToProps)(Shops);

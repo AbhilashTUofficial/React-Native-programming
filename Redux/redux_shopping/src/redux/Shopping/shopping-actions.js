@@ -7,6 +7,15 @@ export const addToCart = itemID => {
   };
 };
 
+export const likeShop = itemID => {
+  return {
+    type: 'LIKE_SHOP',
+    payload: {
+      id: itemID,
+    },
+  };
+};
+
 export const removeFromCart = itemID => {
   return {
     type: 'REMOVE_FROM_CART',
@@ -26,9 +35,9 @@ export const adjustItemQty = (itemID, qty) => {
   };
 };
 
-export const loadCurrentItem = item => {
+export const loadCurrentShop = shop => {
   return {
-    type: 'LOAD_CURRENT_ITEM',
-    payload: item,
+    type: 'LOAD_CURRENT_SHOP',
+    payload: shop,
   };
 };
