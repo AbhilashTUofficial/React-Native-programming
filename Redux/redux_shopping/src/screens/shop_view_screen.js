@@ -1,24 +1,24 @@
-import {useNavigation, useRoute} from '@react-navigation/native';
+import {useNavigation} from '@react-navigation/native';
 import {React, useState} from 'react';
 import {Image, StyleSheet, Text, TouchableOpacity, View} from 'react-native';
-import CartItem from '../Components/Cart/CartItems';
-import ShopView from '../Components/SingleShop/ShopView';
 import {connect} from 'react-redux';
-import {likeShop} from '../redux/Shopping/shopping-actions';
+import {likeShop, addToCart} from '../redux/Shopping/shopping-actions';
 
-const ShopViewScreen = ({currentShop, likeShop}) => {
+const ShopViewScreen = ({currentShop, likeShop, addToCart}) => {
   const navigation = useNavigation();
 
   //! Localizing data
   const shopId = currentShop.id;
   const shopName = currentShop.title;
   const shopImage = currentShop.image;
+  const shopItems = currentShop.items;
   const [liked, setLike] = useState(currentShop.liked);
 
   const likeHandler = () => {
     setLike(!liked);
     likeShop(shopId);
   };
+
   return (
     <>
       <View style={style.header}>
@@ -60,17 +60,33 @@ const ShopViewScreen = ({currentShop, likeShop}) => {
           </TouchableOpacity>
         </View>
         <Text style={style.shopTitle}>{shopName}</Text>
+        {shopItems.map(item => {
+          const itemName = item.itemName;
+          const itemPrice = item.price;
 
-        <View style={{marginVertical: 12}}>
-          <View style={style.itemCont}>
-            <Text>Item 1</Text>
-            <Text>price: </Text>
-            <Text>count()</Text>
-          </View>
-          <TouchableOpacity activeOpacity={0.8} style={style.addBtn}>
-            <Text style={{color: 'white'}}>Add</Text>
-          </TouchableOpacity>
-        </View>
+          const [itemCount, setItemCount] = useState(item.count);
+
+          const addToCartHandler = itemName => {
+            addToCart(shopId, itemName);
+            setItemCount(item.count);
+          };
+
+          return (
+            <View key={itemName} style={{marginVertical: 12}}>
+              <View style={style.itemCont}>
+                <Text>{itemName}</Text>
+                <Text>{itemPrice}</Text>
+                <Text>{itemCount}</Text>
+              </View>
+              <TouchableOpacity
+                onPress={() => addToCartHandler(itemName)}
+                activeOpacity={0.8}
+                style={style.addBtn}>
+                <Text style={{color: 'white'}}>Add</Text>
+              </TouchableOpacity>
+            </View>
+          );
+        })}
       </TouchableOpacity>
     </>
   );
@@ -79,6 +95,7 @@ const ShopViewScreen = ({currentShop, likeShop}) => {
 const mapDispatchToProps = dispatch => {
   return {
     likeShop: id => dispatch(likeShop(id)),
+    addToCart: (id, itemName) => dispatch(addToCart(id, itemName)),
   };
 };
 

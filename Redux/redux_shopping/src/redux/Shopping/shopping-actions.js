@@ -1,17 +1,18 @@
-export const addToCart = itemID => {
+export const addToCart = (shopId, itemName) => {
   return {
     type: 'ADD_TO_CART',
     payload: {
-      id: itemID,
+      id: shopId,
+      itemName: itemName,
     },
   };
 };
 
-export const likeShop = itemID => {
+export const likeShop = shopId => {
   return {
     type: 'LIKE_SHOP',
     payload: {
-      id: itemID,
+      id: shopId,
     },
   };
 };

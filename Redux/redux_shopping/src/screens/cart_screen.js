@@ -1,6 +1,7 @@
 import {React} from 'react';
 import {StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 import CartItem from '../Components/Cart/CartItems';
+import CartNav from '../Components/Cart/CartNav';
 
 const CartScreen = props => {
   return (
@@ -11,7 +12,7 @@ const CartScreen = props => {
         </TouchableOpacity>
         <Text style={style.text}>Carts</Text>
 
-        <Text style={style.text}>Cart(0)</Text>
+        <CartNav />
       </View>
       <CartItem />
     </>
