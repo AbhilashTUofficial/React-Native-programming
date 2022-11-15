@@ -2,6 +2,7 @@ import {useNavigation} from '@react-navigation/native';
 import {React, useState} from 'react';
 import {Image, StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 import {connect} from 'react-redux';
+import CartNav from '../Components/Cart/CartNav';
 import {likeShop, addToCart} from '../redux/Shopping/shopping-actions';
 
 const ShopViewScreen = ({currentShop, likeShop, addToCart}) => {
@@ -22,13 +23,11 @@ const ShopViewScreen = ({currentShop, likeShop, addToCart}) => {
   return (
     <>
       <View style={style.header}>
-        <TouchableOpacity onPress={() => navigation.goBack()}>
+        <TouchableOpacity onPress={() => navigation.navigate('homescreen')}>
           <Text style={style.text}>Go back</Text>
         </TouchableOpacity>
         <Text style={style.text}>Shop View</Text>
-        <TouchableOpacity onPress={() => navigation.navigate('cartscreen')}>
-          <Text style={style.text}>Cart(0)</Text>
-        </TouchableOpacity>
+        <CartNav />
       </View>
       <TouchableOpacity activeOpacity={1} style={style.shopCard}>
         <View style={style.shopCont}>

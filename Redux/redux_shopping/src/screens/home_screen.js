@@ -2,6 +2,7 @@ import {React} from 'react';
 import {StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 import Shops from '../Components/Shop/Shops';
 import {useNavigation} from '@react-navigation/native';
+import CartNav from '../Components/Cart/CartNav';
 
 const HomeScreen = ({products}) => {
   const navigation = useNavigation();
@@ -10,9 +11,7 @@ const HomeScreen = ({products}) => {
       <View style={style.header}>
         <Text style={style.text}>Home</Text>
         <Text style={style.text}>Shops</Text>
-        <TouchableOpacity onPress={() => navigation.navigate('cartscreen')}>
-          <Text style={style.text}>Cart(0)</Text>
-        </TouchableOpacity>
+        <CartNav />
       </View>
       <Shops />
     </>

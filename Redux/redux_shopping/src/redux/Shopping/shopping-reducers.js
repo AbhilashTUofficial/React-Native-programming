@@ -47,17 +47,21 @@ const shopReducer = (state = INITIAL_STATE, action) => {
   switch (action.type) {
     case 'ADD_TO_CART':
       // Get shop shops array
-      const shop = state.shops.find(shop => shop.id === action.payload.id);
+      const currentShop = state.shops.find(
+        shop => shop.id === action.payload.id,
+      );
       // Check if item is in cart already
-      shop.items.map(item => {
+      currentShop.items.map(item => {
         if (item.itemName === action.payload.itemName) {
           item.count += 1;
         }
       });
 
+      const prvShops = state.cart;
+
       return {
         ...state,
-        cart: shop,
+        cart: {...prvShops, ...currentShop},
       };
     case 'LIKE_SHOP':
       return {

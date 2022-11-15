@@ -1,17 +1,19 @@
+import {useNavigation} from '@react-navigation/native';
 import {React} from 'react';
 import {StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 import CartItem from '../Components/Cart/CartItems';
 import CartNav from '../Components/Cart/CartNav';
 
 const CartScreen = props => {
+  const navigation = useNavigation();
+
   return (
     <>
       <View style={style.header}>
-        <TouchableOpacity onPress={() => props.navigation.goBack()}>
+        <TouchableOpacity onPress={() => navigation.navigate('homescreen')}>
           <Text style={style.text}>Go back</Text>
         </TouchableOpacity>
         <Text style={style.text}>Carts</Text>
-
         <CartNav />
       </View>
       <CartItem />
