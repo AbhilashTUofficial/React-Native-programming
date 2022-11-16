@@ -1,5 +1,5 @@
 import { useNavigation } from '@react-navigation/native';
-import { Image, ImageBackground, StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native';
+import { Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 
 
 const Header = ({ title, canGoBack }) => {

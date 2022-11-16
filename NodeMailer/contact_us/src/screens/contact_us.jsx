@@ -1,8 +1,6 @@
-import { Image, ImageBackground, StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native';
+import { Image, StyleSheet, View } from 'react-native';
 import Header from '../Components/Header';
-import InputField from '../Components/InputField';
 import UserEntry from '../Components/UserEntry';
-import { primary } from '../constants';
 
 
 

@@ -1,9 +1,11 @@
-import { Image, ImageBackground, StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native';
+import { Image, StyleSheet, Text, TextInput, View, Linking } from 'react-native';
 import { primary } from '../constants';
 import CustomBtn from './CustomBtn';
 import { connect } from 'react-redux';
 import { submitData } from '../redux/UploadData/uploadData-actions';
 import { useState } from 'react';
+import { response } from 'express';
+import linkEmailApp from '../mailer/linkmailer';
 
 const UserEntry = ({ submitData }) => {
 
@@ -15,6 +17,21 @@ const UserEntry = ({ submitData }) => {
     const [ph, setPh] = useState("");
     const [email, setEmail] = useState("");
     const [message, setMessage] = useState("");
+
+
+    const [backendData, setBackendData] = useState([{}]);
+
+    const fetchApi = () => {
+        fetch("/api")
+            .then((response) => response.json())
+            .then((data) => {
+                setBackendData(data);
+            }).catch(function (error) {
+                console.log("Error while fetchin Api");
+                throw error;
+            });
+    };
+
 
 
     const submitHandler = () => {
@@ -33,6 +50,7 @@ const UserEntry = ({ submitData }) => {
                 <Text style={userEntryStyles.subTitle}>Name</Text>
                 <View style={userEntryStyles.cont}>
                     <TextInput placeholder='Name'
+                        style={{ width: "90%" }}
                         placeholderTextColor={"grey"}
                         onChangeText={(text) => setName(text)} />
                     <Image style={userEntryStyles.icon}
@@ -42,6 +60,7 @@ const UserEntry = ({ submitData }) => {
                 <Text style={userEntryStyles.subTitle}>Mobile Number</Text>
                 <View style={userEntryStyles.cont}>
                     <TextInput placeholder='Mobile Number'
+                        style={{ width: "90%" }}
                         keyboardType='number-pad'
                         placeholderTextColor={"grey"}
                         onChangeText={(text) => setPh(text)} />
@@ -52,6 +71,7 @@ const UserEntry = ({ submitData }) => {
                 <Text style={userEntryStyles.subTitle}>Email</Text>
                 <View style={userEntryStyles.cont}>
                     <TextInput placeholder='Email'
+                        style={{ width: "90%" }}
                         keyboardType='email-address'
                         placeholderTextColor={"grey"}
                         onChangeText={(text) => setEmail(text)} />
@@ -63,6 +83,7 @@ const UserEntry = ({ submitData }) => {
                 <View style={userEntryStyles.cont}>
                     <TextInput
                         multiline
+                        style={{ width: "90%" }}
                         numberOfLines={4}
                         keyboardType='email-address'
                         placeholderTextColor={"grey"}

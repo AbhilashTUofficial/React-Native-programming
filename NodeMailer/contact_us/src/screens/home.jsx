@@ -1,4 +1,4 @@
-import { Image, ImageBackground, StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native';
+import { StyleSheet, View } from 'react-native';
 import ContactUsBtn from '../Components/CustomBtn';
 import Header from '../Components/Header';
 import { useNavigation } from '@react-navigation/native';
