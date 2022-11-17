@@ -34,6 +34,7 @@ const UserEntry = ({ submitData }) => {
 
 
 
+
     const submitHandler = () => {
         submitData(name, ph, email, message);
     };

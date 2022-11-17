@@ -28,19 +28,25 @@ This is fun.
     |   |-- demo_4_4.png
     |   |-- demo_4_5.png
     |
-    |-- Authentication
-    |   |-- demo_1
-    |   |-- demo_2
-    |   |-- demo_3
-    |   |-- demo_4
-    |   |-- README.md
+    |-- Apps
+    |   |-- Authentication
+    |   |   |-- demo_1
+    |   |   |-- demo_2
+    |   |   |-- demo_3
+    |   |   |-- demo_4
+    |   |   |-- README.md
+    |   |
+    |   |-- Calculator_App
+    |   |-- Counter_App
+    |   |-- Hello_World_App
+    |   |-- Timer_App
+    |   |-- Todo_App
     |
-    |-- Calculator_App
-    |-- Counter_App
-    |-- Hello_World_App
-    |-- Timer_App
-    |-- Todo_App
     |-- Redux
+    |
+    |-- NodeMailer
+    |
+    |-- SplashScreen
     |    
     |-- README.md
 
