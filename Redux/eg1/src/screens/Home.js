@@ -1,23 +1,19 @@
 import {useState} from 'react';
 import {StyleSheet, Text, TouchableOpacity, View} from 'react-native';
-import {useDispatch, useSelector} from 'react-redux';
+import {useDispatch} from 'react-redux';
+import {addItem, removeallItem, removeItem} from '../redux/actions/listActions';
 import Dialog from 'react-native-dialog';
-import {
-  addItem,
-  removeItem,
-  removeAllItems,
-} from '../redux/itemCrud/itemCrudSlice';
+import {connect} from 'react-redux';
 
-const Home = () => {
-  const items = useSelector(state => state.items);
+const Home = ({items}) => {
   const dispatch = useDispatch();
 
   const removeallItemHandler = () => {
-    dispatch(removeAllItems());
+    dispatch(removeallItem());
   };
 
-  const removeItemHandler = id => {
-    dispatch(removeItem(id));
+  const removeItemHandler = i => {
+    dispatch(removeItem(i));
   };
   return (
     <View style={style.container}>
@@ -47,7 +43,11 @@ const Home = () => {
   );
 };
 
-export default Home;
+const mapStateToProps = state => {
+  return {items: state.items};
+};
+
+export default connect(mapStateToProps)(Home);
 
 const AddBtn = () => {
   const [visible, setVisible] = useState(false);

@@ -1,4 +1,9 @@
-import {createStore} from 'redux';
-import rootReducer from './rootReducer';
+import {configureStore} from '@reduxjs/toolkit';
 
-export const store = createStore(rootReducer);
+import itemsReducer from './itemCrud/itemCrudSlice';
+
+export const store = configureStore({
+  reducer: {
+    items: itemsReducer,
+  },
+});

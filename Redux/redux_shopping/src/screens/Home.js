@@ -2,23 +2,13 @@ import {useState} from 'react';
 import {StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 import {useDispatch, useSelector} from 'react-redux';
 import Dialog from 'react-native-dialog';
-import {
-  addItem,
-  removeItem,
-  removeAllItems,
-} from '../redux/itemCrud/itemCrudSlice';
 
 const Home = () => {
   const items = useSelector(state => state.items);
-  const dispatch = useDispatch();
 
-  const removeallItemHandler = () => {
-    dispatch(removeAllItems());
-  };
+  const removeallItemHandler = () => {};
 
-  const removeItemHandler = id => {
-    dispatch(removeItem(id));
-  };
+  const removeItemHandler = i => {};
   return (
     <View style={style.container}>
       <Text style={style.title}>LIST({items.length})</Text>
@@ -55,7 +45,6 @@ const AddBtn = () => {
   const dispatch = useDispatch();
 
   const addItemHandler = itemName => {
-    dispatch(addItem(itemName));
     setVisible(false);
   };
 
